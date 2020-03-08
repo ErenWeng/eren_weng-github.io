@@ -1,2 +1,2 @@
-# eren_weng.github.io
+# ErenWeng.github.io
 My tech blog
