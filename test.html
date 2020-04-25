@@ -36,7 +36,7 @@
       var notification = null;
       function ShowNotification(title, body) {
         notification = new Notification(title, {
-          icon: "/icon/ms-icon-310x310.png",
+          icon: "/images/404.jpg",
           body: body,
           onclick: function () {
             parent.focus();
@@ -54,9 +54,9 @@
             }
           });
         } else if (Notification.permission === "granted") {
-          ShowNotification("測試標題", "測試內文");
-          //三秒後自動關閉
-          setTimeout(notification.close.bind(notification), 3000);
+          ShowNotification("Betterme", "該喝水囉");
+          //5秒後自動關閉
+          setTimeout(notification.close.bind(notification), 5000);
         } else {
           alert("請檢查是否你的瀏覽器支援");
         }
