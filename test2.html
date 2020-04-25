@@ -15,6 +15,15 @@
     <button type="button" id="btnGetNotification">取得顯示通知權限</button>
 
     <script>
+      navigator.serviceWorker.register("sw.js");
+      Notification.requestPermission(function (result) {
+        if (result === "granted") {
+          navigator.serviceWorker.ready.then(function (registration) {
+            registration.showNotification("我覺得我快瘋掉了");
+          });
+        }
+      });
+
       $("#btnGetNotification").click(function () {
         navigator.serviceWorker.register("sw.js"); //???
         if (Notification && Notification.permission === "default") {
@@ -34,7 +43,6 @@
     <!-- Display Notification -->
     <button type="button" id="btnShowNotification">跑一個顯示通知範例</button>
     <script>
-      navigator.serviceWorker.register("sw.js");
       var notification = null;
       function ShowNotification(title, body) {
         notification = new Notification(title, {
