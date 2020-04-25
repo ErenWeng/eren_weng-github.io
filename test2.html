@@ -17,19 +17,16 @@
     <script>
       navigator.serviceWorker.register("sw.js");
       Notification.requestPermission(function (result) {
-        function myFunction() {
+        if (result === "granted") {
           setTimeout(function () {
-            if (result === "granted") {
-              navigator.serviceWorker.ready.then(function (registration) {
-                registration.showNotification("我覺得我快瘋掉了");
-              });
-            }
+            navigator.serviceWorker.ready.then(function (registration) {
+              registration.showNotification("延遲13秒顯示通知");
+            });
           }, 13000);
         }
       });
 
       $("#btnGetNotification").click(function () {
-        navigator.serviceWorker.register("sw.js"); //???
         if (Notification && Notification.permission === "default") {
           Notification.requestPermission(function (permission) {
             if (!("permission" in Notification)) {
