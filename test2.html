@@ -44,14 +44,38 @@
 
     <button type="button" id="btnShowNotification2">跑一個顯示通知範例2</button>
     <script>
+      var notification = null;
+      function ShowNotification(title, body) {
+        notification = new Notification(title, {
+          icon: "/images/404.jpg",
+          body: body,
+          onclick: function () {
+            parent.focus();
+            window.focus(); //just in case, older browsers
+            this.close();
+          },
+        });
+      }
+
       navigator.serviceWorker.register("sw.js");
       Notification.requestPermission(function (result) {
         if (result === "granted") {
-          navigator.serviceWorker.ready.then(function () {
-            ShowNotification();
+          navigator.serviceWorker.ready.then(function (registration) {
+            registration.showNotification("該睡囉");
             $("#btnShowNotification2").click(function () {
-              ShowNotification("Betterme", "該睡囉");
-              setTimeout(notification.close.bind(notification), 3000);
+              if (Notification && Notification.permission === "default") {
+                Notification.requestPermission(function (permission) {
+                  if (!("permission" in Notification)) {
+                    Notification.permission = permission;
+                  }
+                });
+              } else if (Notification.permission === "granted") {
+                ShowNotification("Betterme", "該睡囉");
+                //5秒後自動關閉
+                setTimeout(notification.close.bind(notification), 3000);
+              } else {
+                alert("請檢查是否你的瀏覽器支援");
+              }
             });
           });
         }
