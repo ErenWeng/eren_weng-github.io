@@ -49,19 +49,8 @@
         if (result === "granted") {
           navigator.serviceWorker.ready.then(function () {
             $("#btnShowNotification2").click(function () {
-              if (Notification && Notification.permission === "default") {
-                Notification.requestPermission(function (permission) {
-                  if (!("permission" in Notification)) {
-                    Notification.permission = permission;
-                  }
-                });
-              } else if (Notification.permission === "granted") {
-                ShowNotification("Betterme", "該喝水囉");
-                //5秒後自動關閉
-                setTimeout(notification.close.bind(notification), 3000);
-              } else {
-                alert("請檢查是否你的瀏覽器支援");
-              }
+              ShowNotification("Betterme", "該睡囉");
+              setTimeout(notification.close.bind(notification), 3000);
             });
           });
         }
