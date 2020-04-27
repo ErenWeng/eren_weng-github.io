@@ -1,0 +1,8 @@
+I"�<p>剛開始看到符號時，可能會猜測這是什麼有特殊功能的變數嗎？或經過變異的字串？又或是什麼神奇的Ruby黑魔法呢？
+<br />
+Anyway，RTFM first。</p>
+
+<h3 id="在ruby的世界中符號是什麼-what-is-a-symbol-in-rubys-world">在Ruby的世界中符號是什麼？ What is a Symbol in Ruby’s world?</h3>
+
+<p><i>Symbol objects represent names inside the Ruby interpreter. They are generated using the :name and :”string” literals syntax…… . The same Symbol object will be created for a given name or string for the duration of a program’s execution, regardless of the context or meaning of that name. ……</i>[Ref]</p>
+:ET
