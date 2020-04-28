@@ -75,10 +75,13 @@ p {
 }
 
 a {
+  transition: .3s;
   color: $blue;
   text-decoration: none;
   cursor: pointer;
-  &:hover,
+  &:hover{
+    color: $lightBlue;
+  }
   &:active {
     color: $blue;
   }
@@ -281,7 +284,14 @@ nav {
 
   .read-more {
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 14px;
+    padding: .25rem;
+    border-radius: .25rem;
+    background-color: $lightGray;
+    &:hover{
+      background-color: rgba(240, 240, 240, .5);
+      color: $lightBlue;
+    }
   }
 }
 
