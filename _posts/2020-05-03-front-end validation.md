@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "簡單的前端按鈕驗證登入"
-date:   2020-04-24 01:49:28 +0800
+date:   2020-04-24 01:52:28 +0800
 categories: jekyll update
 ---
 [範例影片連結][範例影片]
