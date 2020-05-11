@@ -1,0 +1,254 @@
+I"Z0<h2 id="git-常用指令本地篇">Git 常用指令（本地篇）</h2>
+
+<h3 id="設定">設定</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">git config --global user.name "newbie"</code> 設定姓名</li>
+  <li><code class="highlighter-rouge">git config --global user.email "newbie@email.com"</code> 設定 eamil</li>
+  <li><code class="highlighter-rouge">git config -l</code> 查看設定（list）</li>
+  <li><code class="highlighter-rouge">git config --global core.editor vim</code> 預設編輯器為 vim</li>
+</ul>
+
+<blockquote>
+  <p>–global 參數可以讓所有的 git project 都採用這個預設值</p>
+</blockquote>
+
+<h3 id="git-版控">git 版控</h3>
+
+<ul>
+  <li>
+    <p>版控流程</p>
+
+    <ol>
+      <li>
+        <p><code class="highlighter-rouge">git init</code> 初始化現在位置的資料夾並且讓 git 來控制版本</p>
+
+        <p>2-1. <code class="highlighter-rouge">git add &lt;file&gt;</code> 將修改的檔案由工作目錄 Working Directory/Tree 推送至暫存區域 Staging Area，向 git 說明即將要提交的檔案</p>
+
+        <p>2-2. <code class="highlighter-rouge">git add .</code> 所有檔案推送至暫存</p>
+
+        <p>2-3. <code class="highlighter-rouge">git rm &lt;file&gt;</code> 向 git 說明檔案將要移除，相當於<code class="highlighter-rouge">git add</code></p>
+
+        <p>2-4. <code class="highlighter-rouge">git add -u</code> 加入所有被修改過的檔案（包括刪除）</p>
+      </li>
+      <li><code class="highlighter-rouge">git commit -m "&lt;message&gt;"</code> 將修改由暫存區愈推送至本機儲存庫，並且會新增一個 commit 將 Head 貼紙一併移動至此（沒加訊息會跑到 vim 編輯器，可輸入<code class="highlighter-rouge">:q</code>離開）</li>
+      <li><code class="highlighter-rouge">git push</code> 將修改送到遠端儲存庫</li>
+    </ol>
+  </li>
+  <li>
+    <p>脫離版控</p>
+    <ul>
+      <li><code class="highlighter-rouge">git rm &lt;file&gt; --cached</code> 單個檔案脫離為 Untracked</li>
+      <li><code class="highlighter-rouge">rm -rf .git</code> 刪除所有 git 版控</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="git-status-檔案狀態建議">git status 檔案狀態建議</h3>
+
+<ul>
+  <li>
+    <p>Untracked files（未被追蹤的檔案）：</p>
+
+    <ul>
+      <li>使用<code class="highlighter-rouge">git add</code> 推進暫存</li>
+    </ul>
+  </li>
+  <li>
+    <p>Changes not staged for commit（被更動但尚未要提交的檔案）：</p>
+
+    <ul>
+      <li>使用<code class="highlighter-rouge">git add</code>暫存</li>
+      <li>使用<code class="highlighter-rouge">git checkout &lt;file&gt;</code> 回到修改前的樣子</li>
+    </ul>
+  </li>
+  <li>
+    <p>Changes to be committed（將要提交的檔案，已 add 進暫存）</p>
+    <ul>
+      <li>使用<code class="highlighter-rouge">git reset Head &lt;file&gt;</code> 將檔案還原為尚未 add 的狀態</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="狀態檢查">狀態、檢查</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">git status</code> 查詢現在這個目錄的「狀態」</li>
+  <li><code class="highlighter-rouge">git show</code> 查詢最後一次 commit 的修改內容</li>
+  <li><code class="highlighter-rouge">git show &lt;commit&gt;</code> 查詢某次 commit 的修改內容</li>
+  <li><code class="highlighter-rouge">git log</code> 查詢 commit 的歷史紀錄(時間、作者、做了什麼、貼紙位置、commit)</li>
+  <li><code class="highlighter-rouge">git log &lt;file&gt;</code> 只顯示此檔案之紀錄</li>
+  <li><code class="highlighter-rouge">git log -p &lt;file&gt;</code> 只顯示此檔案的修改紀錄(+是新增 -是刪除)</li>
+  <li><code class="highlighter-rouge">git log --name-status</code> 顯示檔案新增、更動、刪除等資訊情形</li>
+  <li><code class="highlighter-rouge">git log --stat</code> 顯示更動檔案的統計及摘要</li>
+  <li><code class="highlighter-rouge">git log --oneline</code> 只保留(貼紙、commit、做了什麼)</li>
+  <li><code class="highlighter-rouge">git log --oneline --author="a"</code> 只找 a 作者的 commit</li>
+  <li><code class="highlighter-rouge">git log --oneline --grep="WTF"</code> 只找 commit 訊息中有 WTF 的</li>
+  <li><code class="highlighter-rouge">git log --oneline --since="10am" --until="5pm" --after="2020-03"</code> 找到從 2020 年 3 月之後，每天早上 10 點到下午 5 點的 Commit</li>
+  <li><code class="highlighter-rouge">git log --oneline --graph</code> 可看到分支圖形</li>
+  <li><code class="highlighter-rouge">git log --oneline --graph --decorate --all</code> 可看到更美的分支圖形</li>
+  <li><code class="highlighter-rouge">git blame -L 1,10 &lt;file&gt;</code> 檢查此檔案中第 1~10 行的作者與時間</li>
+  <li><code class="highlighter-rouge">git diff &lt;file&gt;</code> 比較檔案最後一次 commit 的到現在已修改的工作目錄和索引</li>
+  <li><code class="highlighter-rouge">git diff &lt;commit_or_branch&gt; &lt;commit_or_branch&gt;</code> 比對兩版本</li>
+  <li><code class="highlighter-rouge">git diff -–name-only &lt;commit_or_branch&gt; &lt;commit_or_branch&gt;</code> 只想檢視此作者兩個版本的修改差別</li>
+</ul>
+
+<h3 id="還原">還原</h3>
+
+<ul>
+  <li>把刪掉的檔案救回 （可先用 git status 看一下那些被刪除，因為如果目錄也被刪掉就沒救了）
+    <ul>
+      <li><code class="highlighter-rouge">git checkout .</code> 救回所有檔案</li>
+      <li><code class="highlighter-rouge">git checkout &lt;file&gt;</code> 救回某檔案</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>如果有做過修改沒 commit 提交，checkout 會放棄此次工作目錄的修改並還原成上次提交版本，並從暫存區退回工作區域（此次修改會被覆蓋小心使用）</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>git checkout 的還原</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git checkout HEAD~2</code> 退回兩個版本前</li>
+    </ul>
+  </li>
+  <li>
+    <p>git reset 的還原</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git reset head</code> 還原 1 次版本</li>
+      <li><code class="highlighter-rouge">git reset head &lt;file&gt;</code> 只還原某個檔案 1 次版本</li>
+      <li><code class="highlighter-rouge">git reset &lt;commit&gt;</code> 回到某次 commit 的版本</li>
+      <li><code class="highlighter-rouge">git reset &lt;commit_or_branch&gt;^</code> 退回此 commit/貼紙 1 次前的版本</li>
+      <li><code class="highlighter-rouge">git reset &lt;commit_or_branch&gt;^^</code> 退回此 commit/貼紙 2 次前的版本</li>
+      <li><code class="highlighter-rouge">git reset &lt;commit_or_branch&gt;~x</code> 退回此 commit/貼紙 x 次前的版本</li>
+    </ul>
+
+    <p>Reset 參數</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git reset --soft &lt;commit_or_branch&gt;</code> : 只移動 Head 和 branch，由儲存庫丟回暫存區，可用於更改 commit 訊息（重 commit 不需要再 add 一次）</li>
+      <li><code class="highlighter-rouge">git reset --mixed &lt;commit_or_branch&gt;</code> : 預設，移動 HEAD 與其 Branch，將暫存區的內容移出</li>
+      <li><code class="highlighter-rouge">git reset --hard &lt;commit_or_branch&gt;</code> : 直接移除暫存及工作目錄所有內容(但並沒有真的消失)</li>
+    </ul>
+  </li>
+  <li>
+    <p>git revert 的還原</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git revert HEAD --no-edit</code> 新增一個 commit 來原地覆蓋上一個不想要的 commit</li>
+      <li><code class="highlighter-rouge">git revert &lt;commit&gt;</code> 新增一個和此 commit 相反的修改</li>
+    </ul>
+  </li>
+  <li>
+    <p>看不見檔案且 commit 也忘了</p>
+
+    <ul>
+      <li>
+        <p><code class="highlighter-rouge">git reflog</code>來查看 head 的移動紀錄（每次 head 移動都會再 reflog 記上一筆 commit，保留 30 天），就會看到 commit，再用<code class="highlighter-rouge">git reset &lt;commit&gt; --hard</code>救回</p>
+      </li>
+      <li>
+        <p>會使 head 發生改變</p>
+        <ul>
+          <li><code class="highlighter-rouge">git commit</code> head 移動到新的 commit</li>
+          <li><code class="highlighter-rouge">git reset --hard &lt;commit&gt;</code> head 換到新的 commit</li>
+          <li><code class="highlighter-rouge">git checkout &lt;branch_or_commit&gt;</code> head 切換到某貼紙或分支</li>
+          <li><code class="highlighter-rouge">git merge/rebase</code> head 合併分支</li>
+          <li><code class="highlighter-rouge">git cherry-pick/revert</code> 挑入/挑出 commit 時</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>log 和 reflog 的差別</p>
+
+    <ul>
+      <li>reflog 可以看到所有分支的操作紀錄</li>
+      <li>log 看不到已經刪除的 commit</li>
+    </ul>
+  </li>
+  <li>
+    <p>reset 和 checkout 的差別</p>
+
+    <ul>
+      <li>checkout 是退回某版本，只會移動 head，分支不會跟著移動，常用於切換分支</li>
+      <li>reset：移動 head 和其 branch，會移出 commit，除了動到 head 還會移動 branch，如果分支沒有人管理就會形同隱形</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="修改">修改</h3>
+
+<ul>
+  <li>
+    <p>–amend</p>
+
+    <ul>
+      <li>
+        <p><code class="highlighter-rouge">git commit --amend -m "add cat"</code> 將最後一次 commit 訊息改為 add cat</p>
+      </li>
+      <li>將 Untracked 的檔案併入已發出的 commit (檔案忘記一起 commit 又不想再 commit 一次)</li>
+      <li><code class="highlighter-rouge">git add &lt;file&gt;</code> 先推至暫存，<code class="highlighter-rouge">git commit --amend --no-edit</code> 再推入最後一次的 commit 並且不加說明文字</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>每次的–amend 都會被視為更改，而產生新的 commit，但實際上 commit 並沒有增加</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>cherry-pick</p>
+
+    <ul>
+      <li>使用<code class="highlighter-rouge">git reset --hard &lt;commit&gt;</code>回到過去的某版本，再使用<code class="highlighter-rouge">git cherry-pick &lt;commit&gt;</code>把後面的版本一自己想要的順序加進來就可以調換順序，當然沒加的就不會顯示（形同刪除紀錄）</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="分支">分支</h3>
+
+<ul>
+  <li>
+    <p>查看、移動</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git branch</code> 查看分支及 head 的位置</li>
+      <li><code class="highlighter-rouge">git checkout &lt;branch_or_commit&gt;</code> 將 head 切換到某分支/commit</li>
+      <li><code class="highlighter-rouge">git branch -f &lt;branch&gt; &lt;commit&gt;</code> 移動某分支到某 commit（如果此分支不存在就會建立新的）</li>
+    </ul>
+  </li>
+  <li>
+    <p>新增分支</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git branch &lt;branch&gt;</code> 新增分支</li>
+      <li><code class="highlighter-rouge">git branch &lt;branch&gt; &lt;commit&gt;</code> 在某 commit 加上分支</li>
+      <li><code class="highlighter-rouge">git checkout -b &lt;branch&gt;</code> 新增分支並且直接切換到新分支</li>
+      <li><code class="highlighter-rouge">git branch -m &lt;old_branch_name&gt; &lt;new_branch_name&gt;</code> 改變分支名稱</li>
+    </ul>
+  </li>
+  <li>
+    <p>刪除分支</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">git branch -d &lt;branch&gt;</code> 可能會顯示你還沒合併的訊息</li>
+      <li><code class="highlighter-rouge">git branch -D &lt;branch&gt;</code> 強制刪除</li>
+    </ul>
+  </li>
+  <li>
+    <p>合併分支 (被合併貼紙的都是在新 commit 的下面)</p>
+    <ul>
+      <li><code class="highlighter-rouge">git merge &lt;branch&gt;</code> 合併分支</li>
+      <li><code class="highlighter-rouge">git merge &lt;branch&gt; --no-ff</code> 保留分支原樣(不使用快轉模式 Fast Forward 合併)</li>
+      <li><code class="highlighter-rouge">git rebase &lt;branch&gt;</code> 將當前分支接到某分支之後，並且會被重新分配一個 commit</li>
+      <li><code class="highlighter-rouge">git rebase &lt;branch_1&gt; &lt;branch_2&gt;</code> 將分支 2 接到分之 1 之後</li>
+    </ul>
+  </li>
+</ul>
+:ET

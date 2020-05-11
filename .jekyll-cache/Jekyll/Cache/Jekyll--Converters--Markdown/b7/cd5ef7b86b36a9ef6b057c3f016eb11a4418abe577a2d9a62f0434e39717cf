@@ -1,0 +1,23 @@
+I"(<h3 id="find">find</h3>
+
+<p>find會取出物件的id，也就是主鍵（primary key）</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">client</span> <span class="o">=</span> <span class="no">Client</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Client id: 10, first_name: "Ryan"&gt;</span>
+
+<span class="vi">@item</span> <span class="o">=</span> <span class="no">Items</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="c1">#</span></code></pre></figure>
+
+<p>但我想要找多個id呢？放上陣列</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">client</span> <span class="o">=</span> <span class="no">Client</span><span class="p">.</span><span class="nf">find</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="c1">#&lt;Client id: 1, first_name: "Lifo"&gt;, #&lt;Client id: 10, first_name: "Ryan"&gt;]</span></code></pre></figure>
+
+<blockquote>
+  <p>若不是find找不動物鍵，就會拋出 ActiveRecord::RecordNotFound 異常。</p>
+</blockquote>
+
+<h3 id="find_by">find_by</h3>
+
+<h3 id="where">where</h3>
+:ET

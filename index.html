@@ -4,14 +4,30 @@ layout: default
 
 <div class="posts">
   {% for post in site.posts %}
-  <article class="post">
-    <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+  <a href="{{ site.baseurl }}{{ post.url }}">
+    <article class="post" id="post">
+      <h1>{{ post.title }}</h1>
 
-    <div class="entry">
-      {{ post.excerpt }}
-    </div>
+      <div class="entry">
+        {{ post.subtitle }}
+      </div>
 
-    <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-  </article>
+    </article>
+  </a>
   {% endfor %}
 </div>
+
+<script defer src="https://unpkg.com/scrollreveal"></script>
+<script defer>
+  // window.onload = function () {
+  //   ScrollReveal({ reset: true });
+  //   ScrollReveal().reveal('.posts', { delay: 200 })
+  //   ScrollReveal().reveal('.post', { interval: 100, reset: true });
+  // };
+</script>
+
+<!-- <div class="entry">
+        {{ post.excerpt }}
+      </div> -->
+
+<!-- <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a> -->

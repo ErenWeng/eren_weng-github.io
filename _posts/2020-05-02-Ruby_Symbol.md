@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Ruby Symbol？Ruby 符號？"
+subtitle: "剛開始看到符號時，可能會猜測這是什麼有特殊功能的變數嗎？或經過變異的字串？又或是什麼神奇的Ruby黑魔法呢？"
 date:   2020-05-02 12:49:02 +0800
 categories: jekyll update
 ---

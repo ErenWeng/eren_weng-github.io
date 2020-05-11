@@ -15,10 +15,28 @@ $gray: #666;
 $lightGray: #eee;
 $white: #fff;
 
+// Neumorphism/soft ui
+$softLightShadow: rgba(255,255,255,0.5);
+$softDarkShadow: rgba(163,177,198,0.5);
+$softWhite: #fff;
+$softGray-3: #f7f9fa;
+$softGray-2: #f0f2f6;
+$softGray-1: #e8ecf1;
+$softMain: #e0e5ec;
+$softGray1: #d9dfe7;
+$softGray2: #d1d8e3;
+$softGray3: #c2cbd9;
+$softDark: #a3b1c6;
+
+
 // Font stacks
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+$noto: 'Noto Sans TC', Arial, sans-serif;
+
 
 // Mobile breakpoints
 @mixin mobile {

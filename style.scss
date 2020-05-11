@@ -19,9 +19,13 @@ html {
 }
 
 body {
-  background: $white;
+  background: $softGray-2;
   font: 18px/1.4 $helvetica;
+  font-family: $noto;
   color: $darkGray;
+  width: calc(100vw - 18px);
+  // padding-left: calc(100% - 100vw);
+  // 修正跳頁
 }
 
 .container {
@@ -37,7 +41,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $helveticaNeue;
+  // font-family: $helveticaNeue;
+  font-family: $noto;
   color: $darkerGray;
   font-weight: bold;
 
@@ -51,7 +56,7 @@ h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 28px;
   a {
     color: inherit;
   }
@@ -287,11 +292,11 @@ nav {
     font-size: 14px;
     padding: .25rem;
     border-radius: .25rem;
-    background-color: $lightGray;
-    &:hover{
-      background-color: rgba(240, 240, 240, .5);
-      color: $lightBlue;
-    }
+    // background-color: $lightGray;
+    // &:hover{
+      // background-color: rgba(240, 240, 240, .5);
+      // color: $lightBlue;
+    // }
   }
 }
 
@@ -299,7 +304,7 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  background-color: $softGray1;
 }
 
 footer {
@@ -328,3 +333,50 @@ html {
 .bottom-place {
   margin-bottom: 150px;
 }
+
+#main .posts .post{
+  height: 170px;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 30px 0;
+  //
+  background: $softMain;
+  box-shadow:  9px 9px 16px $softDarkShadow, 
+               -9px -9px 16px $softLightShadow;
+  transition: .3s;
+
+  &:hover{
+    background: $softGray-1;
+    box-shadow:  12px 12px 24px $softDark, 
+                 -12px -12px 24px $softWhite;
+
+    transition: .3s;
+
+  }  
+  h1{
+    margin: 0 0 10px 0;
+    padding: 0;
+  }
+  .entry{
+    color: $darkGray;
+  }
+}
+
+//滾動條
+
+html::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background: $softMain;
+}
+
+html::-webkit-scrollbar
+{
+	width: 15px;
+}
+
+html::-webkit-scrollbar-thumb
+{
+	background-color: #A2B1C6;
+}
+

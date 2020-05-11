@@ -1,0 +1,11 @@
+I"-<h3 id="find">find</h3>
+
+<p>find會取出物件的id，也就是主鍵（primary key）</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">client</span> <span class="o">=</span> <span class="no">Client</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Client id: 10, first_name: "Ryan"&gt;</span></code></pre></figure>
+
+<h3 id="find_by">find_by</h3>
+
+<h3 id="where">where</h3>
+:ET
