@@ -1,4 +1,13 @@
-I"-<p><a href="https://youtu.be/bq92xRjYwDw">範例影片連結</a></p>
+---
+layout: post
+title:  "簡單的前端按鈕驗證登入"
+subtitle: "真的很簡單"
+date:   2020-05-02 01:52:28 +0800
+categories: jekyll update
+---
+[範例影片連結][範例影片]
+
+[範例影片]: https://youtu.be/bq92xRjYwDw
 
 <style>
   .movie{
@@ -14,10 +23,10 @@
   }
 </style>
 
-<!-- <div class="movie">
+<div class="movie">
 <iframe width="480" height="270" src="https://www.youtube.com/embed/bq92xRjYwDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div> -->
+</div>
+
+
 
 <script src="https://gist.github.com/ErenWeng/d73d2108206c770e1ac94edb17a6cfa1.js"></script>
-
-:ET

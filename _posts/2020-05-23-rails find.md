@@ -2,7 +2,7 @@
 layout: post
 title:  "Rails find, find_by, take, where?"
 subtitle: "想從資料庫找到資料但方法還是搞不清楚嗎？"
-date:   2020-05-11 10:50:58 +0800
+date:   2020-05-23 10:50:58 +0800
 categories: jekyll update
 ---
 
