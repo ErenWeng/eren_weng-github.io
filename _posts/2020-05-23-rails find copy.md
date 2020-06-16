@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Ubuntu + Oh-My-Zsh + Pure + highlighting + Windows Terminal"
-subtitle: "看膩了舊有的終端機了嗎？換個樣式個人淺見"
-date:   2020-06-16 22:10:58 +0800
+title:  "Rails find, find_by, take, where?"
+subtitle: "想從資料庫找到資料但方法還是搞不清楚嗎？"
+date:   2020-05-23 10:50:58 +0800
 categories: jekyll update
 ---
 
