@@ -1,2 +1,1 @@
-Eren Weng
-This is my blog
+Hi, This is Eren Weng, Welcome to my blog.
