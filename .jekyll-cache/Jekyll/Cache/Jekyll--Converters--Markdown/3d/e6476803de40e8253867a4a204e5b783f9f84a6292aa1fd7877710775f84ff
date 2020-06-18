@@ -1,4 +1,4 @@
-I"�)<p><br /></p>
+I"+<p><br /></p>
 
 <p>想要有像這樣的終端機介面嗎？</p>
 <ol>
@@ -41,7 +41,7 @@
   <li>系統要更新</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt-get update
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt-get update
 $sudo apt-get upgrade
 </code></pre></div></div>
 
@@ -53,7 +53,7 @@ $sudo apt-get upgrade
   <li>輸入以下指令</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt-get install zsh
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo apt-get install zsh
 </code></pre></div></div>
 
 <p><br /></p>
@@ -62,7 +62,7 @@ $sudo apt-get upgrade
   <li>檢查是否安裝成功</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cat /etc/shells
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cat /etc/shells
 </code></pre></div></div>
 <p>（出現 /usr/bin/zsh 就是安裝成功）</p>
 
@@ -73,11 +73,11 @@ $sudo apt-get upgrade
     <p>如果我想在bash 和 zsh做切換呢？</p>
 
     <p>1.修改預設的 Shell為zsh</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $chsh -s /bin/zsh
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $chsh -s /bin/zsh
 </code></pre></div>    </div>
 
     <p>2.修改預設的 Shell為bash</p>
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $chsh -s /bin/bash
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $chsh -s /bin/bash
 </code></pre></div>    </div>
   </li>
 </ul>
@@ -90,7 +90,7 @@ $sudo apt-get upgrade
   <li>curl及wget選一個即可</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#via curl
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#via curl
 $sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 #via wget
@@ -109,7 +109,7 @@ $sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/t
 
 <p><a href="https://github.com/sindresorhus/pure">Pure Github</a></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo npm install --global pure-prompt
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo npm install --global pure-prompt
 </code></pre></div></div>
 
 <p>現在許多的網頁開發工具都會使用 npm 套件管理程式來安裝，當使用
@@ -121,7 +121,7 @@ $sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/t
   <li>找個地方建立資料夾，複製Pure 的repo</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p "$HOME/.zsh"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 </code></pre></div></div>
 
@@ -134,7 +134,7 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 <p>這邊根據Pure的官方文件做自己想要的設定</p>
 
 <p>使用vim編輯器進入文件</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.zshrc
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.zshrc
 </code></pre></div></div>
 
 <p>（如果他有詢問動作，按E進行編輯）<br />
@@ -144,9 +144,9 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
 <p>如果沒有加上ZSH_DISABLE_COMPFIX=true會出現以下錯誤：</p>
 
-<p>要修復權限，可以通過禁用”group”和”others”的寫入權限並確保這些目錄的所有者是root或目前的使用者來修復權限。以下命令可能有所幫助：<code class="highlighter-rouge">compaudit | xargs chmod g-w，o-w</code> 。如果沒有，或者你想跳過不安全目錄的驗證，你可以在zshrc文件中找到oh-my-zsh，將變數ZSH_DISABLE_COMPFIX設置為true。</p>
+<p>要修復權限，可以通過禁用”group”和”others”的寫入權限並確保這些目錄的所有者是root或目前的使用者來修復權限。以下命令可能有所幫助：<code class="language-plaintext highlighter-rouge">compaudit | xargs chmod g-w，o-w</code> 。如果沒有，或者你想跳過不安全目錄的驗證，你可以在zshrc文件中找到oh-my-zsh，將變數ZSH_DISABLE_COMPFIX設置為true。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 ZSH_DISABLE_COMPFIX=true
 
 #將clone下來的repo加到$HOME/.zshrc的$fpath中
@@ -183,7 +183,7 @@ zstyle :prompt:pure:cmd:max:exec:time show yes
 
 <p><a href="https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md">zsh-syntax-highlighting github</a></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &gt;&gt; ${ZDOTDIR:-$HOME}/.zshrc
 
@@ -197,9 +197,9 @@ source ~/.zshrc
 
 <p>於Microsoft Store 安裝 Windows Terminal。安裝成功後打開設定，視窗會跳出 setting.json，貼上以下程式碼。詳細的設定可以到 <a href="https://docs.microsoft.com/zh-tw/windows/terminal/customize-settings/profile-settings">windows 終端機中的設定檔設定</a> 查詢。</p>
 
-<p>其中的 “icon”: 可以自己找圖，然後放在<code class="highlighter-rouge">/mnt/c/Users/你的名字/AppData/Local/Microsoft/WindowsApps/Microsoft.WindowsTerminal_8wekyb3d8bbwe</code></p>
+<p>其中的 “icon”: 可以自己找圖，然後放在<code class="language-plaintext highlighter-rouge">/mnt/c/Users/你的名字/AppData/Local/Microsoft/WindowsApps/Microsoft.WindowsTerminal_8wekyb3d8bbwe</code></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "defaultProfile": "{78e390db-1bff-4533-9d7c-20f53d8bafa1}",
     "initialRows": 30,

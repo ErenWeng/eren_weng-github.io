@@ -19,18 +19,19 @@ categories: jekyll update
 
 - 版控流程
 
-  1. `git init` 初始化現在位置的資料夾並且讓 git 來控制版本
+  1.`git init` 初始化現在位置的資料夾並且讓 git 來控制版本
 
-     2-1. `git add <file>` 將修改的檔案由工作目錄 Working Directory/Tree 推送至暫存區域 Staging Area，向 git 說明即將要提交的檔案
+  2-1. `git add <file>` 將修改的檔案由工作目錄 Working Directory/Tree 推送至暫存區域 Staging Area，向 git 說明即將要提交的檔案
 
-     2-2. `git add .` 所有檔案推送至暫存
+  2-2. `git add .` 所有檔案推送至暫存
 
-     2-3. `git rm <file>` 向 git 說明檔案將要移除，相當於`git add`
+  2-3. `git rm <file>` 向 git 說明檔案將要移除，相當於`git add`
 
-     2-4. `git add -u` 加入所有被修改過的檔案（包括刪除）
+  2-4. `git add -u` 加入所有被修改過的檔案（包括刪除）
 
-  2. `git commit -m "<message>"` 將修改由暫存區愈推送至本機儲存庫，並且會新增一個 commit 將 Head 貼紙一併移動至此（沒加訊息會跑到 vim 編輯器，可輸入`:q`離開）
-  3. `git push` 將修改送到遠端儲存庫
+  3.`git commit -m "<message>"` 將修改由暫存區愈推送至本機儲存庫，並且會新增一個 commit 將 Head 貼紙一併移動至此（沒加訊息會跑到 vim 編輯器，可輸入`:q`離開）
+  
+  4.`git push` 將修改送到遠端儲存庫
 
 - 脫離版控
   - `git rm <file> --cached` 單個檔案脫離為 Untracked

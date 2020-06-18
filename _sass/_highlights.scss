@@ -12,17 +12,6 @@ pre {
 }
 
 
-ul {
-  list-style: none;
-  position: relative;
-  li:before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-  }
-}
-
-
 li {
   color: #2f5c8f !important;
   p:not(:first-child){
