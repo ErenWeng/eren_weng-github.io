@@ -1,109 +1,136 @@
----
-layout: post
-title:  "Rails find, find_by, take, where?"
-subtitle: "想從資料庫找到資料但方法還是搞不清楚嗎？"
-date:   2020-05-23 10:50:58 +0800
-categories: jekyll update
----
+I"�&<blockquote>
+  <p>有些東西裝了之後能就會忘記怎麼寫出來的了，所以把他記下來</p>
+</blockquote>
 
-### Ubuntu
+<h3 id="安裝ubuntu">安裝Ubuntu</h3>
 
-有些東西裝了之後能就會忘記怎麼寫出來的了，所以把他記下來
+<ul>
+  <li>
+    <p>首先要有基本安裝</p>
 
-- 首先要有基本安裝
+    <p>1.設備：Windows 10，於Microsoft store下載即可</p>
 
-1. 設備：Windows 10
-2. Ubuntu 18.04 LTS，啟用是常見的Bash Shell
-3. 安裝git 
+    <p>2.Ubuntu 18.04 LTS，啟用後會是常見的Bash Shell</p>
 
-{% terminal %}
-$sudo apt-get install git
-{% endterminal %}
+    <p>3.安裝git</p>
 
-4. 安裝npm
+    <p> <a href="https://git-scm.com/book/zh-tw/v2/%E9%96%8B%E5%A7%8B-Git-%E5%AE%89%E8%A3%9D%E6%95%99%E5%AD%B8">git官網</a></p>
 
+    <p>4.安裝npm</p>
 
-- 系統要更新
+    <p> <a href="https://www.npmjs.com/get-npm">npm官網</a></p>
+  </li>
+</ul>
 
-{% terminal %}
-$sudo apt-get update
-$sudo apt-get upgrade
-{% endterminal %}
+<p><br /></p>
 
+<ul>
+  <li>
+    <p>系統要更新</p>
 
-### 安裝 zsh 
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $sudo apt-get update
+  $sudo apt-get upgrade
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-{% terminal %}
-$sudo apt-get install zsh
-{% endterminal %}
+<p><br /></p>
 
+<h3 id="安裝-zsh">安裝 zsh</h3>
 
-- 檢查是否安裝成功
+<ul>
+  <li>
+    <p>輸入以下指令</p>
 
-{% terminal %}
-$cat /etc/shells
-{% endterminal %}
-出現 /usr/bin/zsh 就是安裝成功
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  $sudo apt-get install zsh
+</code></pre></div>    </div>
+  </li>
+</ul>
 
-### 安裝 oh-my-zsh
+<p><br /></p>
 
-以下選一個即可
+<ul>
+  <li>檢查是否安裝成功</li>
+</ul>
 
-{% terminal %}
-#via curl
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$cat /etc/shells
+</code></pre></div></div>
+<p>（出現 /usr/bin/zsh 就是安裝成功）</p>
+
+<p><br /></p>
+
+<ul>
+  <li>如果我想在bash 和 zsh做切換呢？</li>
+</ul>
+
+<p>修改預設的 Shell為zsh</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$chsh -s /bin/zsh
+</code></pre></div></div>
+
+<p>修改預設的 Shell為bash</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$chsh -s /bin/bash
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="安裝-oh-my-zsh">安裝 oh-my-zsh</h3>
+
+<p>curl及wget選一個即可</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#via curl
 $sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 #via wget
 $sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-{% endterminal %}
+</code></pre></div></div>
 
-### 切換bash 和 zsh之間
+<p><br /></p>
 
-修改預設的 Shell為zsh
-{% terminal %}
-$chsh -s /bin/zsh
-{% endterminal %}
+<h3 id="使用樣式-pure">使用樣式 Pure</h3>
 
-修改預設的 Shell為bash
-{% terminal %}
-$chsh -s /bin/bash
-{% endterminal %}
+<p>我之所以會選擇這個樣式，是因為他看起來很簡潔，而且在所有樣式的評分算是不錯的</p>
 
-### 使用樣式 Pure
+<p><a href="https://github.com/sindresorhus/pure">Pure Github</a></p>
 
-我之所以會選擇這個樣式，是因為他看起來很簡潔，而且在所有樣式的評分算是不錯的
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo npm install --global pure-prompt
+</code></pre></div></div>
 
-Github：https://github.com/sindresorhus/pure
+<p>現在許多的網頁開發工具都會使用 npm 套件管理程式來安裝，當使用痊癒安裝時，如果沒有使用 root 權限，通常都會出現沒有權限的錯誤訊息，所以在這邊前面才加上了sudo</p>
 
-{% terminal %}
-$ sudo npm install --global pure-prompt
-{% endterminal %}
+<ul>
+  <li>找個地方建立資料夾，複製Pure 的repo</li>
+</ul>
 
-現在許多的網頁開發工具都會使用 npm 套件管理程式來安裝，當使用痊癒安裝時，如果沒有使用 root 權限，通常都會出現沒有權限的錯誤訊息，所以在這邊前面才加上了sudo
-
-- 找個地方建立資料夾，複製Pure 的repo
-
-{% terminal %}
-mkdir -p "$HOME/.zsh"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-{% endterminal %}
+</code></pre></div></div>
 
-- 修改 .zshrc 文件
+<ul>
+  <li>修改 .zshrc 文件</li>
+</ul>
 
-看Pure的文件做自己想要的設定
+<p>看Pure的文件做自己想要的設定</p>
 
-使用vim編輯器進入文件
-{% terminal %}
-vim ~/.zshrc
-{% endterminal %}
+<p>使用vim編輯器進入文件</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim ~/.zshrc
+</code></pre></div></div>
 
-（如果他有詢問動作，按E進行編輯）
-（i 進行編輯，esc 離開編輯，:wq 離開）
+<p>（如果他有詢問動作，按E進行編輯）
+（i 進行編輯，esc 離開編輯，:wq 離開）</p>
 
-如果沒有加上ZSH_DISABLE_COMPFIX=true會出現以下錯誤：
->要修復權限，可以通過禁用"group"和"others"的寫入權限並確保這些目錄的所有者是root或目前的使用者來修復權限。以下命令可能有所幫助：compaudit | xargs chmod g-w，o-w 。如果沒有，或者你想跳過不安全目錄的驗證，你可以在zshrc文件中找到oh-my-zsh，將變數ZSH_DISABLE_COMPFIX設置為true。
+<p>如果沒有加上ZSH_DISABLE_COMPFIX=true會出現以下錯誤：</p>
+<blockquote>
+  <table>
+    <tbody>
+      <tr>
+        <td>要修復權限，可以通過禁用”group”和”others”的寫入權限並確保這些目錄的所有者是root或目前的使用者來修復權限。以下命令可能有所幫助：compaudit</td>
+        <td>xargs chmod g-w，o-w 。如果沒有，或者你想跳過不安全目錄的驗證，你可以在zshrc文件中找到oh-my-zsh，將變數ZSH_DISABLE_COMPFIX設置為true。</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
 
-{% terminal %}
-
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 ZSH_DISABLE_COMPFIX=true
 
 #將clone下來的repo加到$HOME/.zshrc的$fpath中
@@ -124,33 +151,31 @@ zstyle ':prompt:pure:prompt:*' color white
 zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:cmd:max:exec:time show yes
 
-{% endterminal %}
+</code></pre></div></div>
 
-### 安裝 zsh-syntax-highlighting
+<h3 id="安裝-zsh-syntax-highlighting">安裝 zsh-syntax-highlighting</h3>
 
-語法高亮讓打字看起來更加清楚
+<p>語法高亮讓打字看起來更加清楚</p>
 
-文件安裝步驟：https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+<p>文件安裝步驟：https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md</p>
 
-{% terminal %}
-#安裝
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#安裝
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" &gt;&gt; ${ZDOTDIR:-$HOME}/.zshrc
 
 
 #讀取並執行此檔案中的命令
 source ~/.zshrc
-{% endterminal %}
+</code></pre></div></div>
 
-### 安裝及設定Windows Terminal
+<h3 id="安裝及設定windows-terminal">安裝及設定Windows Terminal</h3>
 
-於Microsoft Store 安裝 Windows Terminal
+<p>於Microsoft Store 安裝 Windows Terminal</p>
 
-設定好後點開設定，並貼上以下程式碼
+<p>設定好後點開設定，並貼上以下程式碼</p>
 
-```
-{
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "defaultProfile": "{78e390db-1bff-4533-9d7c-20f53d8bafa1}",
     "initialRows": 30,
@@ -298,4 +323,5 @@ source ~/.zshrc
         }
     ]
 }
-```
+</code></pre></div></div>
+:ET

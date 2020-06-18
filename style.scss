@@ -57,6 +57,7 @@ h6 {
 
 h1 {
   font-size: 28px;
+  color: #41b1a7;
   a {
     color: inherit;
   }
@@ -64,6 +65,7 @@ h1 {
 
 h2 {
   font-size: 24px;
+  color: #41b1a7;
 }
 
 h3 {
@@ -275,12 +277,16 @@ nav {
 
 .post {
   blockquote {
-    margin: 1.8em 0.8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
+    margin: .5rem .5rem .5rem 30px;
+    color: #8aa ;
+    border-left: 2px solid #bdd ;
+    background-color: #dee;
+    padding: .1em 1em;
+    font-size: 16px ;
     font-style: italic;
+  }
+  a {
+    text-decoration: underline;
   }
 
   .comments {
@@ -353,14 +359,16 @@ html {
     transition: .3s;
 
   }  
-  h1{
+  h1, h2{
     margin: 0 0 10px 0;
     padding: 0;
+    color: #41b1a7;
   }
   .entry{
     color: $darkGray;
   }
 }
+
 
 //滾動條
 

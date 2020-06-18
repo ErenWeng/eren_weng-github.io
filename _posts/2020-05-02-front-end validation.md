@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "簡單的前端按鈕驗證登入"
-subtitle: "真的很簡單"
+subtitle: "只是練習而已，code很醜"
 date:   2020-05-02 01:52:28 +0800
 categories: jekyll update
 ---
