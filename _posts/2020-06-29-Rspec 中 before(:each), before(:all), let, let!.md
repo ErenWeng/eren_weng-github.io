@@ -26,11 +26,11 @@ categories: jekyll update
 ### `before(:each)` 和 `before(:all)`的區別
 
 >before(:example) # run before each example
->\
+>
 >before(:context) # run one time only, before all of the examples in a group
->\
+>
 >Note: the :example and :context scopes are also available as :each and :all, respectively. Use whichever you prefer.
->\
+>
 >[`before` and `after` hooks](https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/before-and-after-hooks)
 
 - before(:each) / before(:example)：在每個 example 內都會事先觸發，但不像 let 限於變數的定義
