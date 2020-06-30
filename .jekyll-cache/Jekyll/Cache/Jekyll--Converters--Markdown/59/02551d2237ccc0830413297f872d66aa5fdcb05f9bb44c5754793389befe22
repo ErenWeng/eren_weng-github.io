@@ -1,0 +1,38 @@
+I"�<p><br /></p>
+
+<h3 id="let-和-let-的區別"><code class="language-plaintext highlighter-rouge">let</code> 和 <code class="language-plaintext highlighter-rouge">let!</code> 的區別</h3>
+
+<p>在寫測試時，如果遇到需要重複使用的參數時，這時會用let把參數一次寫在最前面</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">let</code>：只在參數被呼叫時才會觸發，又稱惰性求值（Lazy Evaluation）</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def let(name, &amp;block)
+  raise "#let or #subject called without a block" if block.nil?
+  raise(
+  "#let or #subject called with a reserved name #initialize"
+  ) if :initialize == name
+  our_module = MemoizedHelpers.module_for(self)
+
+  if our_module.instance_methods(false).include?(name)
+    our_module.__send__(:remove_method, name)
+  end
+  our_module.__send__(:define_method, name, &amp;block)
+
+  if instance_methods(false).include?(name)
+    remove_method(name)
+  end
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">let!</code>：在每個example前面都會事先觸發</li>
+</ul>
+
+<p>原始碼：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def let!(name, &amp;block)
+  let(name, &amp;block)
+  before { __send__(name) }
+end
+</code></pre></div></div>
+:ET

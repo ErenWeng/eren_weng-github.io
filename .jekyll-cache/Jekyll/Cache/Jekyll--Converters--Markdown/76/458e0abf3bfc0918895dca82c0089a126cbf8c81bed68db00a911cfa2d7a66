@@ -1,0 +1,82 @@
+I"�<p><br /></p>
+
+<h3 id="let-和-let-的區別"><code class="language-plaintext highlighter-rouge">let</code> 和 <code class="language-plaintext highlighter-rouge">let!</code> 的區別</h3>
+
+<p>在寫測試時如果遇到需要重複使用的參數，可以用let把參數一次寫在最前面</p>
+
+<blockquote>
+  <p>Note that let is lazy-evaluated (惰性求值) : it is not evaluated until the first time. the method it defines is invoked. You can use let! to force the method’s invocation before each example.<a href="https://relishapp.com/rspec/rspec-core/v/3-9/docs/helper-methods/let-and-let#use-%60let%60-to-define-memoized-helper-method">Project: RSpec Core 3.9</a></p>
+</blockquote>
+
+<p>也就是說兩者差別在於：</p>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">let</code>：在某 example 內，參數有被呼叫才會觸發</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">let!</code>：在每個 example 內都會事先觸發</p>
+  </li>
+</ul>
+
+<p>原始碼：</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">let</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="s2">"#let or #subject called without a block"</span> <span class="k">if</span> <span class="n">block</span><span class="p">.</span><span class="nf">nil?</span>
+  <span class="k">raise</span><span class="p">(</span>
+  <span class="s2">"#let or #subject called with a reserved name #initialize"</span>
+  <span class="p">)</span> <span class="k">if</span> <span class="ss">:initialize</span> <span class="o">==</span> <span class="nb">name</span>
+  <span class="n">our_module</span> <span class="o">=</span> <span class="no">MemoizedHelpers</span><span class="p">.</span><span class="nf">module_for</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">our_module</span><span class="p">.</span><span class="nf">instance_methods</span><span class="p">(</span><span class="kp">false</span><span class="p">).</span><span class="nf">include?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">our_module</span><span class="p">.</span><span class="nf">__send__</span><span class="p">(</span><span class="ss">:remove_method</span><span class="p">,</span> <span class="nb">name</span><span class="p">)</span>
+  <span class="k">end</span>
+  <span class="n">our_module</span><span class="p">.</span><span class="nf">__send__</span><span class="p">(</span><span class="ss">:define_method</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="nb">instance_methods</span><span class="p">(</span><span class="kp">false</span><span class="p">).</span><span class="nf">include?</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="n">remove_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">if</span> <span class="n">block</span><span class="p">.</span><span class="nf">arity</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">define_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">{</span> <span class="n">__memoized</span><span class="p">.</span><span class="nf">fetch_or_store</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">{</span> <span class="k">super</span><span class="p">(</span><span class="no">RSpec</span><span class="p">.</span><span class="nf">current_example</span><span class="p">,</span> <span class="o">&amp;</span><span class="kp">nil</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="k">else</span>
+    <span class="n">define_method</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">{</span> <span class="n">__memoized</span><span class="p">.</span><span class="nf">fetch_or_store</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">{</span> <span class="k">super</span><span class="p">(</span><span class="o">&amp;</span><span class="kp">nil</span><span class="p">)</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">let!</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">let</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span>
+  <span class="n">before</span> <span class="p">{</span> <span class="nb">__send__</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><a href="https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/memoized_helpers.rb">原始碼來源</a></p>
+
+<h3 id="beforeeach-和-beforeall的區別"><code class="language-plaintext highlighter-rouge">before(:each)</code> 和 <code class="language-plaintext highlighter-rouge">before(:all)</code>的區別</h3>
+
+<blockquote>
+  <p>before(:example) # run before each example
+<br />
+before(:context) # run one time only, before all of the examples in a group
+<br />
+Note: the :example and :context scopes are also available as :each and :all, respectively. Use whichever you prefer.
+<br />
+<a href="https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/before-and-after-hooks"><code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> hooks</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>before(:all) / before(:context)：在所有的 example block 開始前觸發</p>
+  </li>
+  <li>
+    <p>before(:each) / before(:example)：在每個 example 內都會事先觸發，不限於
+before(:all) is run outside of transactions, so data created here will bleed into other specs
+before(:each) is run before each spec inside it,</p>
+  </li>
+</ul>
+
+<p><a href="https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/hooks.rb">原始碼</a></p>
+
+<ul>
+  <li>注意：
+不要在 before 的 block 內使用 let，因為這就是 let! 在做的事情</li>
+</ul>
+:ET

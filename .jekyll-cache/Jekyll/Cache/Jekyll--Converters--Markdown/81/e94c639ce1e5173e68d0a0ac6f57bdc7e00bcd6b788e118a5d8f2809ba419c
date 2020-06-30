@@ -1,0 +1,55 @@
+I"%
+<p><br /></p>
+
+<h3 id="let-和-let-的區別"><code class="language-plaintext highlighter-rouge">let</code> 和 <code class="language-plaintext highlighter-rouge">let!</code> 的區別</h3>
+
+<p>在寫測試時如果遇到需要重複使用的參數，可以用let把參數一次寫在最前面</p>
+
+<blockquote>
+  <p>Note that let is lazy-evaluated (惰性求值) : it is not evaluated until the first time. the method it defines is invoked. You can use let! to force the method’s invocation before each example.<a href="https://relishapp.com/rspec/rspec-core/v/3-9/docs/helper-methods/let-and-let#use-%60let%60-to-define-memoized-helper-method">Project: RSpec Core 3.9</a></p>
+</blockquote>
+
+<blockquote>
+  <p>let creates lazily-evaluated local variables. This means that let() is not evaluated until the method that it formed is run for the first time.<a href="https://dzone.com/articles/rspec-let-vs-before"></a></p>
+</blockquote>
+
+<p>也就是說兩者差別在於：</p>
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">let</code>：在某 example 內，參數有被呼叫才會觸發</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">let!</code>：在每個 example 內都會事先觸發</p>
+  </li>
+</ul>
+
+<p><a href="https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/memoized_helpers.rb">原始碼</a></p>
+
+<h3 id="beforeeach-和-beforeall的區別"><code class="language-plaintext highlighter-rouge">before(:each)</code> 和 <code class="language-plaintext highlighter-rouge">before(:all)</code>的區別</h3>
+
+<blockquote>
+  <p>before(:example) # run before each example
+<br />
+before(:context) # run one time only, before all of the examples in a group
+<br />
+Note: the :example and :context scopes are also available as :each and :all, respectively. Use whichever you prefer.
+<br />
+<a href="https://relishapp.com/rspec/rspec-core/v/3-9/docs/hooks/before-and-after-hooks"><code class="language-plaintext highlighter-rouge">before</code> and <code class="language-plaintext highlighter-rouge">after</code> hooks</a></p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>before(:each) / before(:example)：在每個 example 內都會事先觸發，不限於</p>
+  </li>
+  <li>
+    <p>before(:all) / before(:context)：在所有的 example block 開始前觸發，所產生的範圍會影響所有的specs</p>
+  </li>
+</ul>
+
+<p><a href="https://github.com/rspec/rspec-core/blob/master/lib/rspec/core/hooks.rb">原始碼</a></p>
+
+<ul>
+  <li>注意：
+不要在 before 的 block 內使用 let，因為這就是 let! 在做的事情</li>
+</ul>
+:ET
