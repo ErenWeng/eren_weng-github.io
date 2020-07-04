@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rspec 中 before(:each), before(:all), let, let!的區別"
-subtitle: "我的測試還有藥醫嗎？"
+subtitle: "測試裡這麼好用的方法當然要趕快學會阿"
 date:   2020-06-29 16:45:54 +0800
 categories: jekyll update
 ---

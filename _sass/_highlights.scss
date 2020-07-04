@@ -1,36 +1,5 @@
 
-pre {
-  font-size: 15px;
-  background-color: #efefef;
-  padding: 7px 7px 7px 10px;
-  border: 1px solid #ddd;
-  -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  box-shadow: 3px 3px rgba(0,0,0,0.1);
-  margin: 20px 0 20px 30px;
-  overflow: scroll;
-}
 
-
-li {
-  color: #2f5c8f !important;
-  p:not(:first-child){
-    color: initial;
-  }
-}
-
-code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
-  word-break: break-all;
-}
-
-h3 {
-  color: #41b1a7 !important;
-  background-color: #dee;
-  border-radius: .25rem;
-  padding: 0 .5rem;
-  display: inline-block;
-}
 
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */

@@ -20,7 +20,7 @@ html {
 
 body {
   background: $softGray-2;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.4 $helvetica;
   font-family: $noto;
   color: $darkGray;
   width: calc(100vw - 18px);
@@ -276,6 +276,8 @@ nav {
 }
 
 .post {
+  position: relative;
+
   blockquote {
     margin: .5rem .5rem .5rem 30px;
     color: #8aa ;
@@ -303,6 +305,39 @@ nav {
       // background-color: rgba(240, 240, 240, .5);
       // color: $lightBlue;
     // }
+  }
+
+  pre {
+    font-size: 15px;
+    background-color: #efefef;
+    padding: 7px 7px 7px 10px;
+    border: 1px solid #ddd;
+    -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
+    box-shadow: 3px 3px rgba(0,0,0,0.1);
+    margin: 20px 0 20px 30px;
+    overflow: scroll;
+  }
+
+
+  li {
+    color: #2f5c8f !important;
+    p:not(:first-child){
+      color: initial;
+    }
+  }
+
+  code {
+    font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+    word-break: break-all;
+  }
+
+  h3 {
+    color: #41b1a7;
+    background-color: #dee;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    display: inline-block;
   }
 }
 
@@ -341,24 +376,24 @@ html {
 }
 
 #main .posts .post{
-  height: 170px;
-  border-radius: 10px;
+  height: 250px;
+  border-radius: 5px;
   padding: 15px;
   margin: 30px 0;
   //
   background: $softMain;
-  box-shadow:  9px 9px 16px $softDarkShadow, 
+  box-shadow:  9px 9px 16px $softDarkShadow,
                -9px -9px 16px $softLightShadow;
   transition: .3s;
 
   &:hover{
     background: $softGray-1;
-    box-shadow:  12px 12px 24px $softDark, 
+    box-shadow:  12px 12px 24px $softDark,
                  -12px -12px 24px $softWhite;
 
     transition: .1s;
 
-  }  
+  }
   h1, h2{
     margin: 0 0 10px 0;
     padding: 0;
@@ -367,6 +402,16 @@ html {
 
   .entry{
     color: $darkGray;
+  }
+}
+
+#post{
+  h3{
+    margin: 0 0 10px 0;
+    padding: 0;
+    color: #41b1a7;
+    background:none;
+    font-size: 21px;
   }
 }
 
@@ -389,3 +434,13 @@ html::-webkit-scrollbar-thumb
 	background-color: #A2B1C6;
 }
 
+.index-date{
+  font-size: 1rem;
+  font-style: normal;
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  .fa{
+    color: $darkGray;
+  }
+}
