@@ -328,7 +328,8 @@ nav {
   }
 
   code {
-    font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+    // font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+    font-family: $code;
     word-break: break-all;
   }
 
@@ -339,6 +340,24 @@ nav {
     padding: 0 .5rem;
     display: inline-block;
   }
+}
+
+pre {
+  font-size: 15px;
+  background-color: #efefef;
+  padding: 7px 7px 7px 10px;
+  border: 1px solid #ddd;
+  -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px rgba(0,0,0,0.1);
+  margin: 20px 0 20px 30px;
+  overflow: scroll;
+}
+
+code {
+  // font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+  font-family: $code;
+  word-break: break-all;
 }
 
 .wrapper-footer {

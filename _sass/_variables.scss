@@ -4,8 +4,11 @@
 //
 
 // Colors
-$blue: #4183C4;
-$lightBlue: #4099FF;
+$blue: #097e74;
+$lightBlue: #41B1A7;
+
+// $blue: #4183C4;
+// $lightBlue: #4099FF;
 
 // Grays
 $black: #000;
@@ -36,7 +39,7 @@ $georgia: Georgia, serif;
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
 $noto: 'Noto Sans TC', Arial, sans-serif;
-
+$code: 'Cascadia Code', Consolas, 'Courier New', monospace;
 
 // Mobile breakpoints
 @mixin mobile {
