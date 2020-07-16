@@ -1,0 +1,81 @@
+I"K<p><br /></p>
+
+<h3 id="拿取遠端資料">拿取遠端資料</h3>
+
+<ul>
+  <li>
+    <p>設定遠端節點</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git remote -v</code> 查看已經在資料庫註冊的節點</li>
+      <li><code class="language-plaintext highlighter-rouge">git remote add|rm &lt;remote&gt; &lt;url&gt;</code> 增加｜刪除某 HHTPS/SSH 地址的節點</li>
+      <li><code class="language-plaintext highlighter-rouge">git remote rename &lt;old_remote&gt; &lt;new_remote&gt;</code> 更換節點名稱</li>
+    </ul>
+  </li>
+  <li>
+    <p>從遠端拿資料下來</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git clone &lt;url&gt;</code> 複製這個地址的資料，並且會自動新增節點(如果沒有的話)</li>
+      <li><code class="language-plaintext highlighter-rouge">git fetch &lt;remote&gt; &lt;branch&gt;</code> 從節點上抓資料下來，並且建立一個名為<code class="language-plaintext highlighter-rouge">&lt;remote&gt;/&lt;branch&gt;</code> 的分支在同時新增的一個 commit 之上(前一個 commit 就是你原本的東西)</li>
+      <li><code class="language-plaintext highlighter-rouge">git pull &lt;remote&gt; &lt;branch&gt;</code> 從節點上抓資料下來，和原資料 merge 合併為一個新的 commit</li>
+      <li><code class="language-plaintext highlighter-rouge">git pull --rebase &lt;remote&gt; &lt;branch&gt;</code> 從節點抓資料下來，和原資料 rebase 合併為一個新的 commit</li>
+    </ul>
+  </li>
+  <li>
+    <p>刪除本地分支</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git pull -p</code> 在本地刪除遠端已經刪除的分支</li>
+    </ul>
+  </li>
+  <li>
+    <p>從遠端伺服器抓資料同步的四種方法（跟 merge 一樣可能會發生衝突）</p>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git pull &lt;remote&gt; &lt;branch&gt;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">git fetch &lt;remote&gt; &lt;branch&gt;; git merge &lt;remote&gt;/&lt;branch&gt;</code> = <code class="language-plaintext highlighter-rouge">git pull origin master</code></li>
+      <li><code class="language-plaintext highlighter-rouge">git fetch &lt;remote&gt; &lt;branch&gt;; git rebase &lt;remote&gt;/&lt;branch&gt;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">git fetch &lt;remote&gt; &lt;branch&gt;; git cherry-pick &lt;remote&gt;/&lt;branch&gt;</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="送資料到遠端">送資料到遠端</h3>
+
+<ul>
+  <li>
+    <p>將資料送到遠端</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git push remote &lt;remote&gt; &lt;branch&gt;</code> 第一次推東西到空的專案時，要記得先在建立 remote，通常為 origin master</li>
+      <li><code class="language-plaintext highlighter-rouge">git push &lt;remote&gt; &lt;branch_1&gt;:&lt;branch_2&gt;</code> 將本地的分支 1 推往某節點，並且在遠端形成分支 2 (pull 也可以這樣做)</li>
+      <li><code class="language-plaintext highlighter-rouge">git push &lt;remote&gt; &lt;branch&gt;</code> 上面的縮寫，分支不改變</li>
+      <li><code class="language-plaintext highlighter-rouge">git push -u &lt;remote&gt; &lt;branch&gt;</code> 將推資料上去外，會將分支設定為預設</li>
+      <li><code class="language-plaintext highlighter-rouge">git push</code> 推預設分支的資料上去（有設定才有）</li>
+      <li><code class="language-plaintext highlighter-rouge">git push --all &lt;remote&gt;</code></li>
+      <li><code class="language-plaintext highlighter-rouge">git push -f &lt;remote&gt;</code> 將新的資料推上去後覆蓋所有歷史紀錄（小心使用）</li>
+    </ul>
+  </li>
+  <li>
+    <p>刪除遠端分支</p>
+
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">git push &lt;remote&gt; :&lt;branch&gt;</code> 將沒東西推往分支，會刪除遠端分支</li>
+      <li><code class="language-plaintext highlighter-rouge">git push origin --delete &lt;branch&gt;</code> 同上</li>
+    </ul>
+
+    <p>git push 的更新衝突解決方式</p>
+
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">git pull &lt;remote&gt; &lt;branch&gt;</code> 拉下來成新的分支（然後就會有很多分支合併）</li>
+      <li>使用 GitHub 的 fork 功能來操作 Pull Request/issue，其中會遇到三個選項
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">Create a merge commit</code> 就是 merge</li>
+          <li><code class="language-plaintext highlighter-rouge">Rebase and merge</code> 就是 rebase</li>
+          <li><code class="language-plaintext highlighter-rouge">Squash and merge</code> 擠壓成一個 commit 放進來（過程擠壓）</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+:ET

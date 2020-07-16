@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Git 常用指令 （本地篇）"
-subtitle: "Git 是個好工具，只是拿來做版本存檔也很好用，在此附上個人筆記以防萬一"
+subtitle: "Git 是個好工具，拿來做版本控制跟存檔很好用，在此附上個人筆記以防萬一"
 date:   2020-05-09 11:56:58 +0800
 categories: jekyll update
 ---
@@ -30,7 +30,7 @@ categories: jekyll update
   2-4. `git add -u` 加入所有被修改過的檔案（包括刪除）
 
   3.`git commit -m "<message>"` 將修改由暫存區愈推送至本機儲存庫，並且會新增一個 commit 將 Head 貼紙一併移動至此（沒加訊息會跑到 vim 編輯器，可輸入`:q`離開）
-  
+
   4.`git push` 將修改送到遠端儲存庫
 
 - 脫離版控
