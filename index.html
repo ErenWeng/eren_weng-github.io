@@ -5,17 +5,18 @@ layout: default
 <div class="posts">
   {% for post in site.posts %}
   <a href="{{ site.baseurl }}{{ post.url }}">
-    <article class="post" id="post">
-      <h3>{{ post.title }}</h3>
-
-      <div class="entry">
-        {{ post.subtitle }}
-      </div>
-      <div class="date index-date">
-        <i class="fa fa-calendar"></i> <span>{{ post.date | date: "%Y-%m-%d" }}</span>
-      </div>
-
-    </article>
+    <div data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom">
+      <article class="post" id="post">
+        <h3>{{ post.title }}</h3>
+        <div class="entry">
+          {{ post.subtitle }}
+        </div>
+        <div class="date index-date">
+          <i class="fa fa-calendar"></i> <span>{{ post.date | date: "%Y-%m-%d" }}</span>
+        </div>
+      </article>
+    </div>
   </a>
   {% endfor %}
 </div>
