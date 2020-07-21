@@ -23,9 +23,7 @@ body {
   font: 16px/1.4 $helvetica;
   font-family: $noto;
   color: $darkGray;
-  max-width: calc(100vw);
-  // padding-left: calc(100% - 100vw);
-  // 修正跳頁
+  max-width: calc(100vw - 15px);
 }
 
 .container {
