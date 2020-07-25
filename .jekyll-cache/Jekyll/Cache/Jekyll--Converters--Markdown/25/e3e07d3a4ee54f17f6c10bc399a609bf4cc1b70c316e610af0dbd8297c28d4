@@ -1,0 +1,76 @@
+I"�<p><br /></p>
+
+<h2 id="前言">前言</h2>
+
+<p>隨著Ajax的技術成熟，一些簡化Ajax使用方法的程式庫也相繼問世。AJAX的方法也演進到不只單純的要求與回應，甚至還要能進一步的做資料處理，然而XHR的非同步程式結構並沒有提供這種方法。</p>
+
+<p>接下來將介紹 Fetch</p>
+
+<h2 id="什麼是-fetch">什麼是 Fetch</h2>
+
+<p>Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML5 API。Fetch 提供了一個全域的 fetch() 方法，需填上網址和對應的屬性設定，，執行後就會送出 <code class="language-plaintext highlighter-rouge">request</code>，並且回傳一個帶有 <code class="language-plaintext highlighter-rouge">response</code> 的 <code class="language-plaintext highlighter-rouge">promise</code> 物件，再使用 <code class="language-plaintext highlighter-rouge">then</code> 將回傳值傳遞下去。</p>
+
+<ul>
+  <li>Fetch request 屬性</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">屬性</th>
+      <th style="text-align: left">設定</th>
+      <th style="text-align: left">預設</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">url</td>
+      <td style="text-align: left">網址，fetch裡第一個參數</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">method</td>
+      <td style="text-align: left">發出請求方法</td>
+      <td style="text-align: left">get</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">headers</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>method	GET、POST、PUT、DELETE、HEAD ( 預設 GET )
+headers	要求相關的 Headers 物件 ( 預設 {} )
+mode	cors、no-cors、same-origin、navigate ( 預設 cors )
+referrer	no-referrer、client 或某個網址 ( 預設 client )
+credentials	omit、same-origin、include ( 預設 omit )
+redirect	follow、error、manual ( 預設 manual )
+cache	default、no-store、reload、no-cache、force-cache ( 預設 default )
+body	要加到要求中的內容 ( 如果 method 為 GET 或 HEAD 則不設定 )</p>
+
+<p>fetch</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://sample.com/api/</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// API，預設為 get 方法</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="c1">// 轉換 ReadableStream 物件</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="c1">// 成功則執行此函式</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+  <span class="c1">// 失敗則執行此函式</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://sample.com/api/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// 將方法改為 POST</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="c1">// 設定 Header</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+  <span class="c1">// 將資料內容轉換為 JSON 字串</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,42 @@
+I"�<p><br /></p>
+
+<h2 id="前言">前言</h2>
+
+<p>隨著Ajax的技術成熟，一些簡化Ajax使用方法的程式庫也相繼問世。AJAX的方法也演進到不只單純的要求與回應，甚至還要能進一步的做資料處理，然而XHR的非同步程式結構並沒有提供這種方法。</p>
+
+<p>接下來將介紹 Fetch</p>
+
+<h2 id="什麼是-fetch">什麼是 Fetch</h2>
+
+<p>Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML5 API。Fetch 提供了一個全域的 fetch() 方法，需填上網址和對應的屬性設定，，執行後就會送出HTTP request，並且回傳一個帶有 <code class="language-plaintext highlighter-rouge">response</code> 的 <code class="language-plaintext highlighter-rouge">promise</code> 物件，再使用then傳遞下去。</p>
+
+<p>他提供了 <code class="language-plaintext highlighter-rouge">Request</code> 與 <code class="language-plaintext highlighter-rouge">Response</code> 物件</p>
+
+<p>在 Fetch 中有四个基本概念，他们分别是 Headers、Request 、Response 和 Body。为了更好的理解 Fetch，我们需要对这些概念做一个简单的了解。</p>
+
+<p>在一个完整的 HTTP 请求中，其实就已经包含了这四个概念。请求中有请求头和请求体，响应中有响应头和响应体。所以我们有必要了解这些概念。</p>
+
+<p>fetch()是一個全域的方法，包含了需要 fetch 的網址和對應的屬性設定 ( 例如 method、headers、mode、body…等，最基本的寫法屬性不一定要填 )，執行之後會送出 Request，如果得到回應就會回傳帶有 Response 的 Promise 物件，使用 then 將回傳值傳遞下去。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://uinames.com/api/</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// API，預設為 get 方法</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="c1">// 轉換 ReadableStream 物件</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="c1">// 成功則執行此函式</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+  <span class="c1">// 失敗則執行此函式</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://uinames.com/api/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// 將方法改為 POST</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="c1">// 設定 Header</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+  <span class="c1">// 將資料內容轉換為 JSON 字串</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+:ET
