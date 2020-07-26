@@ -1,0 +1,20 @@
+I"�<p><br /></p>
+
+<p>在了解 <code class="language-plaintext highlighter-rouge">AJAX</code> 的過程，有些 Javascript 的概念需要了解才能依序破解 <code class="language-plaintext highlighter-rouge">AJAX</code> 這道牆。接下來這篇文章會先介紹 <code class="language-plaintext highlighter-rouge">回呼函式</code> 和 <code class="language-plaintext highlighter-rouge">AJAX</code> 的關係</p>
+
+<h3 id="回呼函式蛤">回呼函式？蛤？</h3>
+
+<p>使用回調功能
+回調函數是作為參數傳遞給另一個函數的函數。</p>
+
+<p>如果網站中有多個AJAX任務，則應創建一個用於執行該XMLHttpRequest對象的函數，並為每個AJAX任務創建一個回調函數。</p>
+
+<p>函數調用應包含URL以及響應就緒後要調用的函數。</p>
+
+<p>Using a Callback Function
+A callback function is a function passed as a parameter to another function.</p>
+
+<p>If you have more than one AJAX task in a website, you should create one function for executing the XMLHttpRequest object, and one callback function for each AJAX task.</p>
+
+<p>The function call should contain the URL and what function to call when the response is ready.</p>
+:ET

@@ -1,0 +1,120 @@
+I"�$<p><br /></p>
+
+<p>在了解 <code class="language-plaintext highlighter-rouge">AJAX</code> 的過程，有些 Javascript 的概念需要了解才能依序破解 <code class="language-plaintext highlighter-rouge">AJAX</code> 這道牆。接下來這篇文章會介紹 <code class="language-plaintext highlighter-rouge">回呼函式</code> 和 <code class="language-plaintext highlighter-rouge">AJAX</code> 的關係以及以些 Javascript 的特性</p>
+
+<h3 id="回呼函式之前">回呼函式之前</h3>
+
+<p>想要了解回呼函式，就必須先了解 Javascript 的執行特性</p>
+
+<p>相關文章：
+<a href="https://pjchender.blogspot.com/2017/08/javascript-learn-event-loop-stack-queue.html">[筆記] 理解 JavaScript 中的事件循環、堆疊、佇列和併發模式</a></p>
+
+<ul>
+  <li>單執行緒（single threaded）</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Javasciprt</code> 是單執行緒的語言，單執行緒的特性就是順序執行，當遇到比較耗時的任務時，還未執行的任務就會處於等待狀態，一定要等到前面的任務完成了，才會往後執行。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">work</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">done</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="c1">// work</span>
+<span class="c1">// done</span>
+</code></pre></div></div>
+
+<ul>
+  <li>堆疊（stack）</li>
+</ul>
+
+<p>如果你有搬東西的經驗，就能理解堆疊的概念。<code class="language-plaintext highlighter-rouge">Javascript</code> 會記錄程式碼順序，當遇到某個函式，便會把涵是往上疊加；如果在函式中執行 <code class="language-plaintext highlighter-rouge">return</code> ，則會從上方開始依序搬離函式，堆疊這種結構原理稱為「後進先出」 <code class="language-plaintext highlighter-rouge">Last In First Out</code> （LIFO）。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">money</span> <span class="o">=</span> <span class="mi">158</span>
+
+<span class="kd">function</span> <span class="nx">pay</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">money</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">workTime</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">salery</span> <span class="o">=</span> <span class="nx">pay</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">salery</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">workTime</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>如果上一個函式執行時間很長，難道你要等上個程序慢慢跑完才能接下去嗎？這就是為什麼我們需要非同步的功能。而所謂的回呼函式，便是利用 Javascript 的非同步執行功能，讓這個要跑比較久的函式先去旁邊，等跑完再把它「回呼」回來。</p>
+
+<h3 id="回呼函式蛤">回呼函式？蛤？</h3>
+
+<blockquote>
+  <p>回呼函數其時是一個「參數型態的函式」，傳遞參數給另一個函式。</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">work</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">working</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">done</span><span class="p">(</span><span class="nx">goToWork</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">sleeping</span><span class="dl">'</span><span class="p">)</span>
+  <span class="nx">goToWork</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nx">done</span><span class="p">(</span><span class="nx">work</span><span class="p">)</span>
+
+<span class="c1">// sleeping</span>
+<span class="c1">// working</span>
+</code></pre></div></div>
+
+<ol>
+  <li>執行 <code class="language-plaintext highlighter-rouge">done</code> 函式，並且將 <code class="language-plaintext highlighter-rouge">work</code> 參數帶入 <code class="language-plaintext highlighter-rouge">goToWork</code></li>
+  <li>執行 <code class="language-plaintext highlighter-rouge">done</code> 函式的過程，先印出 <code class="language-plaintext highlighter-rouge">sleeping</code>，再執行 <code class="language-plaintext highlighter-rouge">work</code> 函式</li>
+  <li>執行 <code class="language-plaintext highlighter-rouge">work</code> 函式</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function work() {
+  console.log('working')
+}
+
+function done(goToWork) {
+  console.log('sleeping')
+  goToWork()
+}
+
+done(work)
+</code></pre></div></div>
+
+<p>當有多個 <code class="language-plaintext highlighter-rouge">AJAX</code> 需要執行時，在使用 <code class="language-plaintext highlighter-rouge">XMLHttpRequest</code> 物件時應創建一個用於執行該對象的函數，並為每個AJAX任務創建一個回調函數。</p>
+
+<p>函數調用應包含URL以及響應就緒後要調用的函數。</p>
+
+<p>Using a Callback Function
+A callback function is a function passed as a parameter to another function.</p>
+
+<p>If you have more than one AJAX task in a website, you should create one function for executing the XMLHttpRequest object, and one callback function for each AJAX task.</p>
+
+<p>The function call should contain the URL and what function to call when the response is ready.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">loadDoc</span><span class="p">(</span><span class="dl">"</span><span class="s2">url-1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFunction1</span><span class="p">);</span>
+
+<span class="nx">loadDoc</span><span class="p">(</span><span class="dl">"</span><span class="s2">url-2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFunction2</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">loadDoc</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">cFunction</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">xhttp</span><span class="p">;</span>
+  <span class="nx">xhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+  <span class="nx">xhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">cFunction</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="nx">xhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nx">xhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">myFunction1</span><span class="p">(</span><span class="nx">xhttp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// action goes here</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">myFunction2</span><span class="p">(</span><span class="nx">xhttp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// action goes here</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
