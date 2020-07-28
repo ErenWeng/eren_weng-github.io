@@ -1,0 +1,15 @@
+I"<p><br /></p>
+
+<h2 id="了解並行性-concurrency">了解並行性 concurrency</h2>
+
+<blockquote>
+  <p>指在一個系統中，擁有多個計算 / 事情能夠同時執行的特性，而且他們之間有著潛在的互動
+<a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E5%8F%91%E6%80%A7">來源：維基百科</a></p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Javascript</code> 的並行模型（<code class="language-plaintext highlighter-rouge">concurrency model</code>），也就是讓他能夠並行的模型，就是 <code class="language-plaintext highlighter-rouge">事件循環（event loop）</code></p>
+
+<p>想了解 <code class="language-plaintext highlighter-rouge">event loop</code> 可以先去看看這個網站！如果英文不錯可以順便聽個 youtube</p>
+
+<p><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D">Loupe</a></p>
+:ET

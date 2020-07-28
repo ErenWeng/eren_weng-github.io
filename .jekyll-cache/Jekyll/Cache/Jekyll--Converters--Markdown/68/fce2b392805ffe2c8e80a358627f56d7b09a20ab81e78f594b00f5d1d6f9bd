@@ -1,0 +1,59 @@
+I"�<p><br /></p>
+
+<h2 id="並行性-concurrency">並行性 concurrency</h2>
+
+<blockquote>
+  <p>指在一個系統中，擁有多個計算 / 事情能夠同時執行的特性，而且他們之間有著潛在的互動
+<a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E5%8F%91%E6%80%A7">來源：維基百科</a></p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Javascipt</code> 是單執行緒語言，事件只能一個一個執行，要能達到像同時執行的 <code class="language-plaintext highlighter-rouge">並行性</code>，就要有個並行模型（<code class="language-plaintext highlighter-rouge">concurrency model</code>），也就是讓他能夠同時執行多個事件（非同步）的模型， <code class="language-plaintext highlighter-rouge">事件循環（event loop）</code></p>
+
+<h2 id="執行環境概念">執行環境概念</h2>
+
+<p>在 <code class="language-plaintext highlighter-rouge">Javascript</code> 引擎中存在著三個概念</p>
+
+<h2 id="事件循環-event-loop">事件循環 event loop</h2>
+
+<p>想了解 <code class="language-plaintext highlighter-rouge">event loop</code> 可以先去看看 Philip Roberts 做的視覺化工具！隨便輸入一些 code 觀察一下事件的流程，你會更清楚 <code class="language-plaintext highlighter-rouge">event loop</code> 在做什麼，如果英文不錯可以順便看個 youtube。</p>
+
+<p><a href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D">所以說 event loop 到底是什麼玩意兒？</a></p>
+
+<p><img src="../images/eventLoop.png" alt="event loop" /></p>
+
+<p>相信有點進去看的就會看到這張圖是如何解釋事件處理的過程，首先我們要先了解 <code class="language-plaintext highlighter-rouge">event loop</code> 三個區塊及橘色轉圈 <code class="language-plaintext highlighter-rouge">event loop</code> 的意義</p>
+
+<ul>
+  <li>Call Stack</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Javascipt</code> 執行環境包含一個具有堆疊 （<code class="language-plaintext highlighter-rouge">stack</code>） 的資料結構特性，會遵守 <code class="language-plaintext highlighter-rouge">LIFO（Last In First Out）</code> 原則</p>
+
+<p>Call Stack 區塊便具有 <code class="language-plaintext highlighter-rouge">stack</code> 的特性，會將事件疊加而後處理，就像在搬東西一樣，通常都是往上疊，再從最上面搬離（pop off）或處理</p>
+
+<ul>
+  <li>Web APIs</li>
+</ul>
+
+<p>Web API 是瀏覽器提供的方法，不屬於 <code class="language-plaintext highlighter-rouge">Javascript</code> 引擎，會在瀏覽器執行，這就讓事件有辦法同時進行</p>
+
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/API">有哪些 API 呢？可以看這邊</a></p>
+
+<ul>
+  <li>Callback Queue</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">JavaScript</code> 執行環境包含一個具有佇列（<code class="language-plaintext highlighter-rouge">Queue</code>）的資料結構特性，會遵守 <code class="language-plaintext highlighter-rouge">FIFO（First In First Out）</code> 原則</p>
+
+<p><code class="language-plaintext highlighter-rouge">Callback Queue</code> 區塊便具有 <code class="language-plaintext highlighter-rouge">Queue</code> 的特性，會將事件依順序處理，就像在排隊一樣，先到的就會先搬離或處理</p>
+
+<p>而 <code class="language-plaintext highlighter-rouge">Callback Queue</code> 裡面是放被呼叫回來執行的 <code class="language-plaintext highlighter-rouge">Web APIs</code>，先在這邊等待處理，當 <code class="language-plaintext highlighter-rouge">Call Stack</code> 有空間時，就會從 <code class="language-plaintext highlighter-rouge">Callback Queue</code> 拿取一個事件進行處理。</p>
+
+<p>事件在被呼叫回來執行時，會先到 Callback Queue 待命。</p>
+
+<ul>
+  <li>Event Loop</li>
+</ul>
+
+<p>當 Call Stack 為空時，把在 Callback Queue 裡等待的第一個 回呼函式 callback function 放回 stack 中去執行，達到不阻塞的機制。</p>
+:ET
