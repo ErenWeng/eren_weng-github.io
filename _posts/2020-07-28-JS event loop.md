@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Javscript 的 concurrency model 和 event loop 是什麼？"
+title:  "Javscript 的 concurrency model 和 event loop 是什麼"
 subtitle: "深入了解 Javascript 的背後是怎麼執行的"
 date:   2020-07-28 18:08:20 +0800
 categories: jekyll update

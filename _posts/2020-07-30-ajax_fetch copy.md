@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "AJAX fetch"
+title:  "Javascript 中的 fetch 是什麼"
 subtitle: "隨著Ajax的技術成熟，一些簡化Ajax使用方法的程式庫也相繼問世..."
-date:   2020-07-25 17:18:05 +0800
+date:   2020-07-30 18:54:08 +0800
 categories: jekyll update
 ---
 
@@ -16,10 +16,11 @@ categories: jekyll update
 
 ## 什麼是 Fetch
 
-Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML API。他包含了四個 `interface`（Headers、Body、Request、Response）組成，及一個一個全域的 `fetch()` 方法，必須填上一個 `資源路徑 / 網址` 的參數，可附加對應的屬性設定。
+Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML API。他包含了四個 `interface`（Headers、Body、Request、Response），及一個一個全域的 `fetch()` 方法，必須填上一個 `資源路徑/網址` 的參數，可附加對應的屬性設定。
 
-執行後就會送出 `request`，無論成功與否都會回傳一個帶有 `response` 的 `promise`物件，再使用 `then()` 接收資料或將回傳值傳遞下去，而後可以使用 `catch()` 接收錯誤資料。
+執行後就會送出 `request`，無論成功與否都會回傳一個帶有 `response` 的 `promise` 物件，回傳後再使用 `then()` 接收資料來使用或將回傳值傳遞下去，而後可以使用 `catch()` 接收錯誤資料。
 
+<br>
 
 <div style="display:none">
 
@@ -62,13 +63,11 @@ https://jsonplaceholder.typicode.com/
 console.log(fetch(fetch('https://jsonplaceholder.typicode.com/todos/1'))
 ```
 
-結果會得到一個PromisE物件
+結果會得到一個Promise物件
 ```js
 Promise {<pending>}
 ```
 
-<br>
----
 <br>
 
 我們嘗試來接收資料（fetch預設為get）：
@@ -116,3 +115,7 @@ fetch('https://sample.com/api/', {
   .then(data => console.log(data))
   .catch(err => console.log(err));
 ```
+
+為什麼回傳的要是 `Promise` 物件呢？
+
+待補充...
