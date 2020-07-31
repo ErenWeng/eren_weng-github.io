@@ -13,7 +13,7 @@ categories: jekyll update
 >指在一個系統中，擁有多個計算 / 事情能夠同時執行的特性，而且他們之間有著潛在的互動
 [來源：維基百科](https://zh.wikipedia.org/wiki/%E5%B9%B6%E5%8F%91%E6%80%A7)
 
-`Javascipt` 是單執行緒語言，事件只能一個一個執行，要能達到像同時執行的 `並行性`，就要有個並行模型（`concurrency model`），也就是讓他能夠同時執行多個事件（非同步）的模型， `事件循環（event loop）`
+`Javascipt` 是單執行緒語言，事件不能同時執行，要能達到像同時執行的 `並行性`，就要有個並行模型（`concurrency model`），也就是讓他能夠同時執行多個事件的模型： `事件循環（event loop）`
 
 ## 執行環境概念
 

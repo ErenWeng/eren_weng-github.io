@@ -1,4 +1,4 @@
-I"k<p><br /></p>
+I"V<p><br /></p>
 
 <h2 id="並行性-concurrency">並行性 concurrency</h2>
 
@@ -7,7 +7,7 @@
 <a href="https://zh.wikipedia.org/wiki/%E5%B9%B6%E5%8F%91%E6%80%A7">來源：維基百科</a></p>
 </blockquote>
 
-<p><code class="language-plaintext highlighter-rouge">Javascipt</code> 是單執行緒語言，事件只能一個一個執行，要能達到像同時執行的 <code class="language-plaintext highlighter-rouge">並行性</code>，就要有個並行模型（<code class="language-plaintext highlighter-rouge">concurrency model</code>），也就是讓他能夠同時執行多個事件（非同步）的模型， <code class="language-plaintext highlighter-rouge">事件循環（event loop）</code></p>
+<p><code class="language-plaintext highlighter-rouge">Javascipt</code> 是單執行緒語言，事件不能同時執行，要能達到像同時執行的 <code class="language-plaintext highlighter-rouge">並行性</code>，就要有個並行模型（<code class="language-plaintext highlighter-rouge">concurrency model</code>），也就是讓他能夠同時執行多個事件的模型： <code class="language-plaintext highlighter-rouge">事件循環（event loop）</code></p>
 
 <h2 id="執行環境概念">執行環境概念</h2>
 
