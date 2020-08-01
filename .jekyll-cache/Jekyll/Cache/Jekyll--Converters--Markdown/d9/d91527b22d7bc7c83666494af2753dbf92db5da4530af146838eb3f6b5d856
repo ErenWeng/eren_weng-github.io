@@ -1,0 +1,107 @@
+I"� <p><br /></p>
+
+<h2 id="前言">前言</h2>
+
+<p>隨著Ajax的技術成熟，一些簡化Ajax使用方法的程式庫也相繼問世。AJAX的方法也演進到不只單純的要求與回應，甚至還要能進一步的做資料處理，然而XHR的非同步程式結構並沒有提供這種方法。</p>
+
+<p>接下來將介紹 Fetch</p>
+
+<h2 id="什麼是-fetch">什麼是 Fetch</h2>
+
+<p>Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML API。他包含了四個物件（Headers、Body、Request、Response），及一個一個全域的 <code class="language-plaintext highlighter-rouge">fetch()</code> 方法，必須填上一個 <code class="language-plaintext highlighter-rouge">資源路徑/網址</code> 的參數，可附加對應的屬性設定。</p>
+
+<p>執行後就會送出 <code class="language-plaintext highlighter-rouge">request</code>，無論成功與否都會回傳一個帶有 <code class="language-plaintext highlighter-rouge">response</code> 的 <code class="language-plaintext highlighter-rouge">promise</code> 物件，回傳後再使用 <code class="language-plaintext highlighter-rouge">then()</code> 接收資料來使用或將回傳值傳遞下去，而後可以使用 <code class="language-plaintext highlighter-rouge">catch()</code> 接收錯誤資料。</p>
+
+<p><br /></p>
+
+<div style="display:none">
+
+- Body
+
+- Header
+
+- Request
+
+- Response
+
+- Fetch request 屬性
+
+
+|屬性|設定|預設|
+|:-|:-|:-|
+|url|網址，fetch裡第一個參數 ||
+|method|發出請求方法 |get|
+|headers|headers 相關物件 |{ }|
+|mode|cors、no-cors、same-origin、navigate |cors|
+|referrer|no-referer、client、某網址 |client|
+|credentials|omit、same-origin、include |omit|
+|redirect|follow、error、manual |預設 manual|
+|cache|default、no-store、reload、no-cache、force-cache |預設 default|
+|body |要加到邀求中的內容| |
+
+Response 物件中的 body 屬性提供了一個 ReadableStream 的實體
+這個階段我們無法直接讀取資料內容，而 ReadableStream 物件中可用以下對應的方法來取得資料
+
+
+https://jsonplaceholder.typicode.com/
+</div>
+
+<p>這次使用的資料是：</p>
+
+<p><a href="https://jsonplaceholder.typicode.com/posts/1">https://jsonplaceholder.typicode.com/posts/1</a></p>
+
+<p>試著印出fetch看會是什麼：</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://jsonplaceholder.typicode.com/todos/1</span><span class="dl">'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>結果會得到一個Promise物件</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Promise</span><span class="err"> </span><span class="p">{</span><span class="o">&lt;</span><span class="nx">pending</span><span class="o">&gt;</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<p>我們嘗試來接收資料（fetch預設為get）：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://jsonplaceholder.typicode.com/todos/1</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">json</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>印出的結果：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="err">userId:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">title:</span><span class="w"> </span><span class="s2">"delectus aut autem"</span><span class="p">,</span><span class="w"> </span><span class="err">completed:</span><span class="w"> </span><span class="kc">false</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2><br /></h2>
+<p><br /></p>
+
+<p>fetch get 的寫法</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://sample.com/api/</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// API，預設為 get 方法</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="c1">// 轉換 ReadableStream 物件</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="c1">// 成功則執行此函式</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+  <span class="c1">// 失敗則執行此函式</span>
+</code></pre></div></div>
+
+<p>fetch post 的寫法</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://sample.com/api/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="c1">// 將方法改為 POST</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="c1">// 設定 Header</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+  <span class="c1">// 將資料內容轉換為 JSON 字串</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>為什麼回傳的要是 <code class="language-plaintext highlighter-rouge">Promise</code> 物件呢？</p>
+
+<p>待補充…</p>
+:ET

@@ -16,7 +16,7 @@ categories: jekyll update
 
 ## 什麼是 Fetch
 
-Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML API。他包含了四個 `interface`（Headers、Body、Request、Response），及一個一個全域的 `fetch()` 方法，必須填上一個 `資源路徑/網址` 的參數，可附加對應的屬性設定。
+Fetch 是由 WHATWG（網頁超文字應用技術工作小組）制定的 HTML API。他包含了四個物件（Headers、Body、Request、Response），及一個一個全域的 `fetch()` 方法，必須填上一個 `資源路徑/網址` 的參數，可附加對應的屬性設定。
 
 執行後就會送出 `request`，無論成功與否都會回傳一個帶有 `response` 的 `promise` 物件，回傳後再使用 `then()` 接收資料來使用或將回傳值傳遞下去，而後可以使用 `catch()` 接收錯誤資料。
 
@@ -118,4 +118,24 @@ fetch('https://sample.com/api/', {
 
 為什麼回傳的要是 `Promise` 物件呢？
 
-待補充...
+## Promise
+
+>Promise 是用來改善中 JavaScript 非同步的程式碼結構，讓程式碼更易讀。
+
+在 Ajax 的行為中，需要確保擷取到遠端資料才繼續往下執行時，如果程式碼是依序撰寫，就會無法正確呈現資料，這時只能使用 `callback function` ，當 `callback function` 的層數越多時，就會出現難以讀懂的 `Callback hell`，而不是以then、catch這樣順序接下去。
+
+```js
+a(function(FromA){
+  ...
+  b(FromA, function(FromB){
+    ...
+    c(FromB, function(FromC){
+      ...
+      d(FromC, function(FromD){
+        ...
+        console.log(FromD)
+      })
+    })
+  })
+});
+```
