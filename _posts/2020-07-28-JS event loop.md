@@ -51,7 +51,7 @@ Call Stack 區塊具有 `stack` 的特性，會遵守 `LIFO（Last In First Out�
 
 - Web APIs
 
-Web API 是瀏覽器提供的方法，不屬於 `Javascript` 引擎，會在瀏覽器執行，這就讓事件有辦法同時進行
+Web API 是瀏覽器提供的方法，不屬於 `Javascript` 引擎，會在瀏覽器執行，這就讓事件有辦法同時進行。常見的有 `HTTP Process`、`Timer Process、`DOM Events` 等。
 
 [有哪些 API 呢？可以看這邊](https://developer.mozilla.org/zh-TW/docs/Web/API)
 
