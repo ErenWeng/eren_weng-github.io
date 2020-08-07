@@ -1,0 +1,392 @@
+---
+<!-- title: Playground -->
+permalink: /playground/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Lato:300,300italic,regular,italic,700,700italic|Montserrat:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic|Muli:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic&subset=latin);
+    </style>
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.css">
+    <link rel="SHORTCUT ICON" href="https://template65287.motopreview.com/mt-demo/65200/65287/mt-content/uploads/2017/10/favicon-1223.ico?_build=1584068855" type="image/vnd.microsoft.icon">
+    <script>
+        window.onload = function() {
+            let navTopTrigger = document.querySelector('#mobile-nav-top-trigger');
+            let navTop = document.querySelector('#mobile-nav-top');
+
+            navTopTrigger.addEventListener('click', () => {
+                if(navTopTrigger.classList.contains('active')) {
+                    navTopTrigger.classList.remove('active')
+                    navTop.classList.remove('open')
+                } else {
+                    navTopTrigger.classList.add('active')
+                    navTop.classList.add('open')
+                }
+            });
+        };
+
+        // 當網頁載入後再開始執行，讓三條線被選取，再讓要顯示的nav被選取，然後註冊一個click功能，如果三條線的active類別在，就移除active和open，如果不再就加回去
+    </script>
+</head>
+<body>
+    <!-- nav 200/900/100
+    hd 300/700/200
+    ppl 200 700 300
+    ft 400/400/400
+    40.7127753  -74.0059728
+    200=16.67 300=25 400=33 700=58.33 900=75 -->
+    <container class="container">
+        <a href="#" class="fixed_call">
+            <div class="fix_icon">
+                <i class="fas fa-phone-alt">
+                </i>
+            </div>
+        </a>
+        <header class="header">
+            <p class="hd_space_top">&nbsp;</p>
+            <nav class="hd_item item">
+                <div class="hd_logo col-lg-2 col-sm-12 pdrl">
+                    <p>
+                        <a href="#">MOUNTAINKING</a>
+                    </p>
+                </div>
+                <div class="bar col-lg-0 col-md-0 col-sm-12">
+                    <a href="#" id="mobile-nav-top-trigger">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+                <!-- <div class="hd_nav nav col-lg-9 col-sm-12 pdrl">
+                    <ul class="col-lg-10">
+                        <li class="col-sm-12"><a href="#" class="link_now">HOME</a></li>
+                        <li class="col-sm-12"><a href="#">ABOUT US</a></li>
+                        <li class="col-sm-12"><a href="#">ROOMS & SUITES</a></li>
+                        <li class="col-sm-12"><a href="#">DINNING BAR</a></li>
+                        <li class="col-sm-12"><a href="#">OFFERS & DEALS</a></li>
+                        <li class="col-sm-12"><a href="#">CONTACTS</a></li>
+                    </ul>
+                </div> -->
+                <ul class="hd_nav nav  col-lg-9 col-sm-12" id="mobile-nav-top">
+                    <li class="col-sm-12"><a href="#" class="link_now">HOME</a></li>
+                    <li class="col-sm-12"><a href="#">ABOUT US</a></li>
+                    <li class="col-sm-12"><a href="#">ROOMS & SUITES</a></li>
+                    <li class="col-sm-12"><a href="#">DINNING BAR</a></li>
+                    <li class="col-sm-12"><a href="#">OFFERS & DEALS</a></li>
+                    <li class="col-sm-12"><a href="#">CONTACTS</a></li>
+                </ul>
+                <div class="hd_icon col-lg-1 col-sm-12 pdrl">
+                    <p>
+                        <span>
+                            <a href="#"><i class="fas fa-search"></i></a>
+                        </span>
+                    </p>
+                </div>
+            </nav>
+            <div class="hd_title_all item pdtb">
+                <div class="hd_space_left col-lg-3 col-sm-0 pdrl"></div>
+                <div class="hd_word col-lg-7 col-sm-12 pdrl">
+                    <div class="hd_title">
+                        <h1 class="h-h1">ADVENTURE STARTS RIGHT OUTSIDE OUR DOOR</h1>
+                        <p class="font-1">&nbsp;</p>
+                        <p class="font-1">Your winter holiday experience will certainly become a cherished memory of a place you will always wish to return to!</p>
+                    </div>
+                    <div class="hd_more">
+                        <a href="#">LEARN MORE</a>
+                    </div>
+                </div>
+                <div class="hd_spcace_right col-lg-2 col-sm-2 pdrl">&nbsp;</div>
+            </div>
+            <div class="hd_space_bottom pdtb col-lg-12">&nbsp;</div>
+        </header>
+        <div class="room pdtb item">
+            <div class="rm_title">
+                <div class="rm_title_word col-lg-6 col-sm-12 pdrl">
+                    <h2 class="h-h2">PICK A ROOM THAT BEST SUITS YOUR TASTE AND BUDGET</h2>
+                </div>
+                <div class="rm_title_space col-lg-6 col-sm-0 pdrl">&nbsp</div>
+            </div>
+            <div class="rm_item_group">
+                <div class="rm_item col-lg-4 col-sm-12 pdrl">
+                    <div class="img">
+                        <img src="pic/room-01.jpg" alt="">
+                    </div>
+                    <div class="rm_txt">
+                        <h3 class="h-h3"><a href="#">DELUXE ROOM</a></h3>
+                        <p>&nbsp;</p>
+                        <p>18 m2 <span>•</span> Balcony <span>•</span> Mountain view</p>
+                        <p>&nbsp;</p>
+                        <p class="rm_money h-h3">$200.0</p>
+                        <p class="rm_night">/ Night</p>
+                    </div>
+                </div>
+                <div class="rm_item col-lg-4 col-sm-12 pdrl">
+                    <div class="img">
+                        <img src="pic/room-02.jpg" alt="">
+                    </div>
+                    <div class="rm_txt">
+                        <h3 class="h-h3"><a href="#">SUPERIOR ROOM</a></h3>
+                        <p>&nbsp;</p>
+                        <p>18 m2 <span>•</span> Balcony <span>•</span> Mountain view</p>
+                        <p>&nbsp;</p>
+                        <p class="rm_money h-h3">$200.0</p>
+                        <p class="rm_night">/ Night</p>
+                    </div>
+                </div>
+                <div class="rm_item col-lg-4 col-sm-12 pdrl">
+                    <div class="img">
+                        <img src="pic/room-03.jpg" alt="">
+                    </div>
+                    <div class="rm_txt">
+                        <h3 class="h-h3"><a href="#">STANDARD ROOM</a></h3>
+                        <p>&nbsp;</p>
+                        <p>18 m2 <span>•</span> Balcony <span>•</span> Mountain view</p>
+                        <p>&nbsp;</p>
+                        <p class="rm_money h-h3">$200.0</p>
+                        <p class="rm_night">/ Night</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mountains">
+            <div class="mt_your">
+                <div class="mt_card_all">
+                    <div class="mt_space_left col-lg-2 col-sm-0 pdrl">
+                        &nbsp;
+                    </div>
+                    <div class="mt_card col-lg-4 col-sm-12 pdrl">
+                        <div class="mt_title">
+                            <h2 class="h-h2">YOUR LUXURIOUS HOLIDAY IN THE MOUNTAINS</h2>
+                        </div>
+                        <div class="mt_hr">
+                            <hr>
+                        </div>
+                        <div class="mt_txt font-3">
+                            <p>Welcome to the lavish world of our luxury mountain resort, a 5-star hotel. Get ready for an all year round magic trip to a world of hospitality enriched with activities suitable for nature lovers, families and winter sports fans.</p>
+                            <p>&nbsp;</p>
+                            <p>Natural beauty, combined with comfortable apartments of our resort will not leave you indifferent. Visit our hotel and spend your dream winter holidays in the picturesque mountains.</p>
+                        </div>
+                        <div class="mt_more btn">
+                            <a href="#">
+                                <span>LEARN MORE</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt_img mt_img_t col-lg-6 col-sm-12 pdrl">
+                    </div>
+                </div>
+            </div>
+            <div class="mt_skiing">
+                <div class="mt_card_all">
+                    <div class="mt_img mt_img_b col-lg-6  col-sm-12 pdrl">
+                    </div>
+                    <div class="mt_card col-lg-4 col-sm-12 pdrl">
+                        <div class="mt_title">
+                            <h2 class="h-h2">SKIING AND BOARDING AT A STUNNING MOUNTAIN RESORT</h2>
+                        </div>
+                        <div class="mt_hr">
+                            <hr>
+                        </div>
+                        <div class="mt_txt font-3">
+                            <p>The spirit of the mountains is calling you to our luxurious mountain lodge in scenic mountains. Nestled in Colorado's Mountains, surrounded by acres of pristine ski terrain and majestic 14,000-foot peaks, our breathtaking resort exudes a chic, yet rustic charm that exudes serenity and luxury.</p>
+                            <p>&nbsp;</p>
+                            <p>Beautiful guestrooms and suites and private log cabins feature warm Western design, balconies and modern lifestyle amenities. Designed with soft leather furnishings, rich wood accents, and warm interiors, our mountain accommodations are an oasis of alpine elegance.</p>
+                        </div>
+                        <div class="mt_more btn">
+                            <a href="#">
+                                <span>LEARN MORE</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt_space_right col-lg-2 col-sm-0 pdrl">
+                        &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="food pdtb">
+            <div class="item">
+                <div class="fd_card col-lg-5 col-sm-12 pdrl">
+                    <h2 class="fd_title h-h2">A TRULY MEMORABLE DINING EXPERIENCE</h2>
+                    <div class="fd_hr">
+                        <hr>
+                    </div>
+                    <div class="fd_txt">
+                        <p class="fd_desc font-2">Only best meal, cooked by the professionals. Visiting our hotel, don’t forget about breakfast. We have an incredible variety of dishes.</p>
+                        <p class="font-2">&nbsp;</p>
+                        <p class="font-2">&nbsp;</p>
+                        <p class="fd_menu h-h3">MAIN COURSES MENU</p>
+                        <p class="fd_menu h-h3">&nbsp;</p>
+                        <p class="fd_price font-2">Breakfast   $25.00</p>
+                        <p class="fd_mintxt">&nbsp;</p>
+                        <p class="fd_mintxt">Breakfast to your choice, sandwiches, cold and hot beverages.</p>
+                        <p class="fd_mintxt">&nbsp;</p>
+                        <p class="fd_price font-2">Lunch   $30.00</p>
+                        <p class="fd_mintxt">&nbsp;</p>
+                        <p class="fd_mintxt">Bar & Grill and the perfect hangout for aprés ski cocktails.</p>
+                        <p class="fd_mintxt">&nbsp;</p>
+                        <p class="fd_price font-2">Dinner   $28.00</p>
+                        <p class="fd_mintxt">&nbsp;</p>
+                        <p class="fd_mintxt">The grilled menu, salads, a wide choice of charcuterie and cheese.</p>
+                    </div>
+                </div>
+                <div class="fd_img col-lg-7 col-sm-12 pdrl">
+                    <img src="pic/food.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="ppl pdtb">
+            <div class="item">
+                <div class="ppl_hr col-lg-2 col-sm-12 pdrl">
+                    <hr>
+                </div>
+                <div class="ppl_word col-lg-7 col-sm-12 pdrl">
+                    <div class="ppl_title">
+                        <h2 class="h-h2">PEOPLE REVIEWS</h1>
+                    </div>
+                    <div class="ppl_reviews">
+                        <p class="ppl_talk font-1">“ I am hard pressed to think of a more pleasant, elegant and delicious hotel stay. The only comparable event was the Grand Hotel in Taipei, Taiwan in the 1970's. Thank you both for a memorable occasion. “ </p>
+                        <p class="ppl_talk font-1">&nbsp;</p>
+                        <p class="ppl_name">ALEXANDER HOLMES</p>
+                    </div>
+                </div>
+                <div class="ppl_space_right col-lg-3 col-sm-0 pdrl"></div>
+            </div>
+        </div>
+        <div class="gallery pdtb">
+            <div class="item">
+                <div class="gl_title">
+                    <h2 class="h-h2">GALLERY</h2>
+                </div>
+                <div class="gl_img_group">
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img01.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img02.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img03.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img04.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img05.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="gl_card col-lg-4 col-md-6 col-sm-12">
+                        <a href="#">
+                            <span>
+                                <i class="far fa-snowflake"></i>
+                            </span>
+                            <img src="pic/gallery-img06.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="google_map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d275988.8583084403!2d-74.00325295898075!3d40.644485652241606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzQ2LjAiTiA3NMKwMDAnMjEuNSJX!5e0!3m2!1szh-TW!2stw!4v1583948899278!5m2!1szh-TW!2stw" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <footer class="footer">
+            <div class="ft_info item">
+                <div class="ft_phone ft_card col-lg-4 col-sm-12 pdrl">
+                    <div>
+                        <p class="ft_bigtxt font-1">Phone Support</p>
+                        <p class="ft_mintxt">24 HOURS A DAY</p>
+                        <p class="ft_mintxt">&nbsp;</p>
+                        <p><a href="#">+ 01 345 647 745</a></p>
+                    </div>
+                </div>
+                <div class="ft_connect ft_card col-lg-4 col-sm-12 pdrl">
+                    <div class="ft_connect_title">
+                        <p class="ft_bigtxt font-1">Connect With Us</p>
+                        <p class="ft_mintxt">SOCIAL MEDIA CHANNELS</p>
+                    </div>
+                    <div class="ft_icon col-lg-6 col-md-5">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ft_letter ft_card col-lg-4 col-sm-12 pdrl">
+                    <div class="ft_letter_title">
+                        <p class="ft_bigtxt font-1">Newsletter</p>
+                        <p class="ft_mintxt">SIGN UP FOR SPECIAL OFFERS</p>
+                    </div>
+                    <form>
+                        <input type="email" name="email" id="" placeholder="Enter your e-mail *" required>
+                    </form>
+                    <div class="subscribe btn">
+                        <a href="#">SUBSCRIBE</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="ft_under">
+            <div class="item">
+                <div class="ft_nav nav col-lg-8 col-sm-12 pdrl">
+                    <ul>
+                        <li><a href="" class="link_active">Home</a></li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Rooms & Suites</a></li>
+                        <li><a href="">Dinning Bar</a></li>
+                        <li><a href="">Offers & Deals</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="ft_copywrite col-lg-4 col-sm-12 pdrl">
+                    <p>&copy; 2019 Mountainking.<a href="#"> All rights reserved.</a></p>
+                </div>
+            </div>
+        </div>
+    </container>
+</body>
+</html>
