@@ -61,7 +61,7 @@ https://jsonplaceholder.typicode.com/
 
 試著印出fetch看會是什麼：
 ```js
-console.log(fetch(fetch('https://jsonplaceholder.typicode.com/todos/1'))
+console.log((fetch('https://jsonplaceholder.typicode.com/todos/1')
 ```
 
 結果會得到一個Promise物件
