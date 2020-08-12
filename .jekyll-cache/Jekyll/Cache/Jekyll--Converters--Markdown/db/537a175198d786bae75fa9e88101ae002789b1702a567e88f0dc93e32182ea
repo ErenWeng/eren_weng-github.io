@@ -1,39 +1,17 @@
----
-<!-- title: Playground -->
-permalink: /playground/
----
-
-<!DOCTYPE html>
+I"�K<p>&lt;!DOCTYPE html&gt;</p>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Home</title>
     <style>
         @import url(//fonts.googleapis.com/css?family=Lato:300,300italic,regular,italic,700,700italic|Montserrat:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic|Muli:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic&subset=latin);
     </style>
-    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.css">
-    <link rel="SHORTCUT ICON" href="https://template65287.motopreview.com/mt-demo/65200/65287/mt-content/uploads/2017/10/favicon-1223.ico?_build=1584068855" type="image/vnd.microsoft.icon">
-    <script>
-        window.onload = function() {
-            let navTopTrigger = document.querySelector('#mobile-nav-top-trigger');
-            let navTop = document.querySelector('#mobile-nav-top');
-
-            navTopTrigger.addEventListener('click', () => {
-                if(navTopTrigger.classList.contains('active')) {
-                    navTopTrigger.classList.remove('active')
-                    navTop.classList.remove('open')
-                } else {
-                    navTopTrigger.classList.add('active')
-                    navTop.classList.add('open')
-                }
-            });
-        };
-
-        // 當網頁載入後再開始執行，讓三條線被選取，再讓要顯示的nav被選取，然後註冊一個click功能，如果三條線的active類別在，就移除active和open，如果不再就加回去
-    </script>
+    <link rel="stylesheet" href="fontawesome-free-5.12.1-web/css/all.css" />
+    <link rel="SHORTCUT ICON" href="https://template65287.motopreview.com/mt-demo/65200/65287/mt-content/uploads/2017/10/favicon-1223.ico?_build=1584068855" type="image/vnd.microsoft.icon" />
+    <script src="script.js"></script>
 </head>
 <body>
     <!-- nav 200/900/100
@@ -43,12 +21,32 @@ permalink: /playground/
     40.7127753  -74.0059728
     200=16.67 300=25 400=33 700=58.33 900=75 -->
     <container class="container">
-        <a href="#" class="fixed_call">
-            <div class="fix_icon">
-                <i class="fas fa-phone-alt">
-                </i>
+        <div class="to_top">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <div class="fixed_call">
+            <div class="fixed_icon">
+                <i class="fas fa-phone-alt"></i>
             </div>
-        </a>
+        </div>
+        <div class="fixed_call_change">
+            <div class="fixed_info">
+                <div class="fixed_times" id="info_close">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="fixed_user">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="name">
+                    <strong>John Smith</strong>
+                    </div>
+                <div>
+                    agent
+                    <br />
+                    <i class="fas fa-phone-alt"></i>+112233445566
+                </div>
+            </div>
+        </div>
         <header class="header">
             <p class="hd_space_top">&nbsp;</p>
             <nav class="hd_item item">
@@ -58,26 +56,16 @@ permalink: /playground/
                     </p>
                 </div>
                 <div class="bar col-lg-0 col-md-0 col-sm-12">
-                    <a href="#" id="mobile-nav-top-trigger">
+                    <div id="mobile-nav-top-trigger">
                         <i class="fas fa-bars"></i>
-                    </a>
+                    </div>
                 </div>
-                <!-- <div class="hd_nav nav col-lg-9 col-sm-12 pdrl">
-                    <ul class="col-lg-10">
-                        <li class="col-sm-12"><a href="#" class="link_now">HOME</a></li>
-                        <li class="col-sm-12"><a href="#">ABOUT US</a></li>
-                        <li class="col-sm-12"><a href="#">ROOMS & SUITES</a></li>
-                        <li class="col-sm-12"><a href="#">DINNING BAR</a></li>
-                        <li class="col-sm-12"><a href="#">OFFERS & DEALS</a></li>
-                        <li class="col-sm-12"><a href="#">CONTACTS</a></li>
-                    </ul>
-                </div> -->
                 <ul class="hd_nav nav  col-lg-9 col-sm-12" id="mobile-nav-top">
                     <li class="col-sm-12"><a href="#" class="link_now">HOME</a></li>
                     <li class="col-sm-12"><a href="#">ABOUT US</a></li>
-                    <li class="col-sm-12"><a href="#">ROOMS & SUITES</a></li>
+                    <li class="col-sm-12"><a href="#">ROOMS &amp; SUITES</a></li>
                     <li class="col-sm-12"><a href="#">DINNING BAR</a></li>
-                    <li class="col-sm-12"><a href="#">OFFERS & DEALS</a></li>
+                    <li class="col-sm-12"><a href="#">OFFERS &amp; DEALS</a></li>
                     <li class="col-sm-12"><a href="#">CONTACTS</a></li>
                 </ul>
                 <div class="hd_icon col-lg-1 col-sm-12 pdrl">
@@ -109,12 +97,12 @@ permalink: /playground/
                 <div class="rm_title_word col-lg-6 col-sm-12 pdrl">
                     <h2 class="h-h2">PICK A ROOM THAT BEST SUITS YOUR TASTE AND BUDGET</h2>
                 </div>
-                <div class="rm_title_space col-lg-6 col-sm-0 pdrl">&nbsp</div>
+                <div class="rm_title_space col-lg-6 col-sm-0 pdrl">&amp;nbsp</div>
             </div>
             <div class="rm_item_group">
                 <div class="rm_item col-lg-4 col-sm-12 pdrl">
                     <div class="img">
-                        <img src="pic/room-01.jpg" alt="">
+                        <img src="pic/room-01.jpg" alt="" />
                     </div>
                     <div class="rm_txt">
                         <h3 class="h-h3"><a href="#">DELUXE ROOM</a></h3>
@@ -127,7 +115,7 @@ permalink: /playground/
                 </div>
                 <div class="rm_item col-lg-4 col-sm-12 pdrl">
                     <div class="img">
-                        <img src="pic/room-02.jpg" alt="">
+                        <img src="pic/room-02.jpg" alt="" />
                     </div>
                     <div class="rm_txt">
                         <h3 class="h-h3"><a href="#">SUPERIOR ROOM</a></h3>
@@ -140,7 +128,7 @@ permalink: /playground/
                 </div>
                 <div class="rm_item col-lg-4 col-sm-12 pdrl">
                     <div class="img">
-                        <img src="pic/room-03.jpg" alt="">
+                        <img src="pic/room-03.jpg" alt="" />
                     </div>
                     <div class="rm_txt">
                         <h3 class="h-h3"><a href="#">STANDARD ROOM</a></h3>
@@ -164,7 +152,7 @@ permalink: /playground/
                             <h2 class="h-h2">YOUR LUXURIOUS HOLIDAY IN THE MOUNTAINS</h2>
                         </div>
                         <div class="mt_hr">
-                            <hr>
+                            <hr />
                         </div>
                         <div class="mt_txt font-3">
                             <p>Welcome to the lavish world of our luxury mountain resort, a 5-star hotel. Get ready for an all year round magic trip to a world of hospitality enriched with activities suitable for nature lovers, families and winter sports fans.</p>
@@ -190,7 +178,7 @@ permalink: /playground/
                             <h2 class="h-h2">SKIING AND BOARDING AT A STUNNING MOUNTAIN RESORT</h2>
                         </div>
                         <div class="mt_hr">
-                            <hr>
+                            <hr />
                         </div>
                         <div class="mt_txt font-3">
                             <p>The spirit of the mountains is calling you to our luxurious mountain lodge in scenic mountains. Nestled in Colorado's Mountains, surrounded by acres of pristine ski terrain and majestic 14,000-foot peaks, our breathtaking resort exudes a chic, yet rustic charm that exudes serenity and luxury.</p>
@@ -214,7 +202,7 @@ permalink: /playground/
                 <div class="fd_card col-lg-5 col-sm-12 pdrl">
                     <h2 class="fd_title h-h2">A TRULY MEMORABLE DINING EXPERIENCE</h2>
                     <div class="fd_hr">
-                        <hr>
+                        <hr />
                     </div>
                     <div class="fd_txt">
                         <p class="fd_desc font-2">Only best meal, cooked by the professionals. Visiting our hotel, don’t forget about breakfast. We have an incredible variety of dishes.</p>
@@ -228,7 +216,7 @@ permalink: /playground/
                         <p class="fd_mintxt">&nbsp;</p>
                         <p class="fd_price font-2">Lunch   $30.00</p>
                         <p class="fd_mintxt">&nbsp;</p>
-                        <p class="fd_mintxt">Bar & Grill and the perfect hangout for aprés ski cocktails.</p>
+                        <p class="fd_mintxt">Bar &amp; Grill and the perfect hangout for aprés ski cocktails.</p>
                         <p class="fd_mintxt">&nbsp;</p>
                         <p class="fd_price font-2">Dinner   $28.00</p>
                         <p class="fd_mintxt">&nbsp;</p>
@@ -236,28 +224,28 @@ permalink: /playground/
                     </div>
                 </div>
                 <div class="fd_img col-lg-7 col-sm-12 pdrl">
-                    <img src="pic/food.jpg" alt="">
+                    <img src="pic/food.jpg" alt="" />
                 </div>
             </div>
         </div>
         <div class="ppl pdtb">
             <div class="item">
                 <div class="ppl_hr col-lg-2 col-sm-12 pdrl">
-                    <hr>
+                    <hr />
                 </div>
                 <div class="ppl_word col-lg-7 col-sm-12 pdrl">
                     <div class="ppl_title">
-                        <h2 class="h-h2">PEOPLE REVIEWS</h1>
-                    </div>
+                        <h2 class="h-h2">PEOPLE REVIEWS&lt;/h1&gt;
+                    &lt;/div&gt;
                     <div class="ppl_reviews">
                         <p class="ppl_talk font-1">“ I am hard pressed to think of a more pleasant, elegant and delicious hotel stay. The only comparable event was the Grand Hotel in Taipei, Taiwan in the 1970's. Thank you both for a memorable occasion. “ </p>
                         <p class="ppl_talk font-1">&nbsp;</p>
                         <p class="ppl_name">ALEXANDER HOLMES</p>
                     </div>
-                </div>
+                &lt;/div&gt;
                 <div class="ppl_space_right col-lg-3 col-sm-0 pdrl"></div>
-            </div>
-        </div>
+            &lt;/div&gt;
+        &lt;/div&gt;
         <div class="gallery pdtb">
             <div class="item">
                 <div class="gl_title">
@@ -266,50 +254,50 @@ permalink: /playground/
                 <div class="gl_img_group">
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img01.jpg" alt="">
+                            <img src="pic/gallery-img01.jpg" alt="" />
                         </a>
                     </div>
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img02.jpg" alt="">
+                            <img src="pic/gallery-img02.jpg" alt="" />
                         </a>
                     </div>
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img03.jpg" alt="">
+                            <img src="pic/gallery-img03.jpg" alt="" />
                         </a>
                     </div>
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img04.jpg" alt="">
+                            <img src="pic/gallery-img04.jpg" alt="" />
                         </a>
                     </div>
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img05.jpg" alt="">
+                            <img src="pic/gallery-img05.jpg" alt="" />
                         </a>
                     </div>
                     <div class="gl_card col-lg-4 col-md-6 col-sm-12">
                         <a href="#">
-                            <span>
+                            <span class="light_blue">
                                 <i class="far fa-snowflake"></i>
                             </span>
-                            <img src="pic/gallery-img06.jpg" alt="">
+                            <img src="pic/gallery-img06.jpg" alt="" />
                         </a>
                     </div>
                 </div>
@@ -362,7 +350,7 @@ permalink: /playground/
                         <p class="ft_mintxt">SIGN UP FOR SPECIAL OFFERS</p>
                     </div>
                     <form>
-                        <input type="email" name="email" id="" placeholder="Enter your e-mail *" required>
+                        <input type="email" name="email" placeholder="Enter your e-mail *" required="" />
                     </form>
                     <div class="subscribe btn">
                         <a href="#">SUBSCRIBE</a>
@@ -371,22 +359,29 @@ permalink: /playground/
             </div>
         </footer>
         <div class="ft_under">
-            <div class="item">
-                <div class="ft_nav nav col-lg-8 col-sm-12 pdrl">
-                    <ul>
-                        <li><a href="" class="link_active">Home</a></li>
-                        <li><a href="">About us</a></li>
-                        <li><a href="">Rooms & Suites</a></li>
-                        <li><a href="">Dinning Bar</a></li>
-                        <li><a href="">Offers & Deals</a></li>
-                        <li><a href="">Contacts</a></li>
-                    </ul>
+            <nav class="hd_item item">
+                <div class="bar col-lg-0 col-md-0 col-sm-12">
+                    <div id="mobile-nav-btn-trigger">
+                        <i class="fas fa-bars"></i>
+                    </div>
                 </div>
+                <ul class="hd_nav ft_nav nav  col-lg-9 col-sm-12" id="mobile-nav-btn">
+                    <li class="col-sm-12"><a href="#" class="link_now">HOME</a></li>
+                    <li class="col-sm-12"><a href="#">ABOUT US</a></li>
+                    <li class="col-sm-12"><a href="#">ROOMS &amp; SUITES</a></li>
+                    <li class="col-sm-12"><a href="#">DINNING BAR</a></li>
+                    <li class="col-sm-12"><a href="#">OFFERS &amp; DEALS</a></li>
+                    <li class="col-sm-12"><a href="#">CONTACTS</a></li>
+                </ul>
+            </nav>
+            <div class="hd_item item">
                 <div class="ft_copywrite col-lg-4 col-sm-12 pdrl">
                     <p>&copy; 2019 Mountainking.<a href="#"> All rights reserved.</a></p>
                 </div>
             </div>
         </div>
-    </container>
-</body>
-</html>
+    &lt;/container&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</h2></div></div></div></div></container></body></html>
+:ET

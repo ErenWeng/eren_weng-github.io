@@ -24,7 +24,7 @@
 }
 
 .item{
-    width: 100%;    
+    width: 100%;
     max-width: 1200px;
     margin: auto;
     display: flex;
@@ -152,7 +152,7 @@ p{
     display: flex;
     justify-content: space-between;
     /* max-width: 86.54431818%; */
-    
+
 }
 
 .hd_nav a{
@@ -456,13 +456,37 @@ p{
 }
 
 .gl_card{
-    padding: 10px;
     box-sizing: border-box;
+    position: relative;
+    transition: .3s;
 }
 
 .gl_card img{
+    padding: 10px;
     width: 100%;
 }
+
+.gl_card:hover .light_blue{
+    position: absolute;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    top: 10px;
+    left: 10px;
+    background-color: rgba(29,58,176,0.5);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.gl_card:hover .light_blue .fa-snowflake{
+    font-size: 28px;
+    color: white;
+    transition: .3s;
+}
+
+
 
 
 /* .gl_img a:hover{
@@ -498,7 +522,7 @@ p{
     background-color: #393A47;
 }
 
-.ft_info{  
+.ft_info{
     display: flex;
     padding: 110px 0;
 }
@@ -587,7 +611,7 @@ p{
     display: flex;
     flex-wrap: wrap;
     padding: 20px 0;
-    
+
 }
 
 .ft_nav ul{
@@ -633,6 +657,33 @@ p{
 
 
 /*------fixed-----*/
+.to_top{
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #444555;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.to_top:hover{
+    transition: .3s;
+    background-color: #1d3ab0;
+    cursor: pointer;
+}
+
+.to_top i{
+    font-size: 18px;
+    color: white;
+}
+
+
 
 .fixed_call{
     z-index: 1;
@@ -640,22 +691,93 @@ p{
     height: 80px;
     background-color: #fff;
     position: fixed;
-    bottom: 80px;
-    right: 60px;
+    bottom: 66px;
+    right: 36px;
+    border-radius: 50%;
+    box-shadow: 2px 4px 8px #393a4773;
+    text-align: center;
+    overflow: hidden;
+}
+
+.fixed_call_change{
+    z-index: 0;
+    background-color: #fff;
+    position: fixed;
+    bottom: 66px;
+    right: 36px;
+    box-shadow: 2px 4px 8px #393a4773;
+    text-align: center;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
-.fix_icon{
-    display: flex;
-    justify-content: center;
+.fixed_call i{
+    color: #1d3ab0;
+    transition: .3s;
 }
 
-.fixed_call i{
+.fixed_call .fixed_icon i{
     max-width: 100%;
     font-size: 40px;
     line-height: 80px;
     color: #1d3ab0;
+    transition: .3s;
 }
+
+.fixed_call:hover .fa-phone-alt{
+    color: #4461d3;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.fixed_call:hover{
+    cursor: pointer;
+}
+
+.fixed_info{
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    font-family: 'Montserrat';
+}
+
+.fixed_info strong{
+    font-weight: 700;
+}
+
+.fixed_info .name{
+    padding-top: 8px;
+    font-size: 20px;
+}
+
+.fixed_info .phone{
+   height: 10px;
+}
+
+.fixed_info .fa-phone-alt{
+    font-size: 12px;
+}
+
+.fixed_times{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #1d3ab0;
+    cursor: pointer;
+}
+.fixed_times .fa-times{
+    font-size: 20px;
+}
+
+.fixed_user .fa-user-circle{
+    width:80px;
+    height:80px;
+    font-size: 80px;
+    color: #1d3ab0;
+}
+
 
 /*--------------RWD------------*/
 
@@ -689,16 +811,16 @@ p{
         display: none;
     }
 
-    
+
 
     .h-h1{
         font-size: 35px;
     }
-    
+
     .h-h2{
         font-size: 17px;
     }
-    
+
     .h-h3{
         font-size: 15px;
     }
@@ -706,11 +828,11 @@ p{
     .font-1{
         font-size: 16px;
     }
-    
+
     .font-2{
         font-size: 16px;
     }
-    
+
     .font-3{
         font-size: 14px;
     }
@@ -736,10 +858,10 @@ p{
 
 /*小介面*/
 @media screen and (max-width: 767px){
-  
+
 
     /* [class*="col"]{
-       
+
     } */
     .col-sm-0{width: 0%;}
     .col-sm-1{width: 8.33333333%;}
@@ -758,15 +880,15 @@ p{
     .h-h1{
         font-size: 21px;
     }
-    
+
     .h-h2{
         font-size: 20px;
     }
-    
+
     .font-1{
         font-size: 17px;
     }
-    
+
     .font-2{
         font-size: 15px;
     }
@@ -775,10 +897,10 @@ p{
     padding:0 15px;
     position: relative;
 }
-    
+
     .nav a{
         font-size: 18px;
-        
+
     }
     .fd_mintxt{
         line-height: 1.5;
@@ -794,32 +916,32 @@ p{
         text-align: center;
         overflow: visible;
     }
-    
-    .bar a{
+
+    .bar div{
         display: inline-block;
         background-color: #fff;
         width: 40px;
     }
-    
+
     /* .bar a:hover i{
         color: #fff;
     }
-    
+
     .bar a:hover{
         background-color: #393A47;
     } */
-    
+
     .bar i{
         color:#393A47;
         font-size: 24px;
         line-height: 40px;
     }
 
-    .bar a.active{
+    .bar div.active{
         background-color: #393A47;     /*JS*/
     }
 
-    .bar a.active i{
+    .bar div.active i{
         color: #fff;
     }
 
@@ -835,6 +957,12 @@ p{
         flex-wrap: wrap;
         border:2px solid #393a47;
         display:none;
+    }
+
+    .ft_nav{
+        top: auto;
+        bottom: 60px;
+        border:2px solid #1d3ab0;
     }
 
     .hd_nav.open{               /*JS*/
@@ -867,12 +995,12 @@ p{
         max-width: 400px;
         margin: auto;
     }
-    
+
     .bar a:hover .hd_nav{
         overflow: visible;
     }
 
-    .ft_info{  
+    .ft_info{
         padding: 60px 0;
     }
 
