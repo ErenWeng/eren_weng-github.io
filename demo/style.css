@@ -122,7 +122,7 @@ p{
     padding-top: 50px;
 }
 
-.hd_item{
+.header .hd_item{
     padding-bottom: 50px;
     flex-wrap: nowrap;
 }
@@ -607,11 +607,13 @@ p{
 }
 
 /*------ft_vav--*/
+.ft_under{
+    padding: 20px 0;
+}
+
 .ft_under .item{
     display: flex;
     flex-wrap: wrap;
-    padding: 20px 0;
-
 }
 
 .ft_nav ul{
@@ -670,6 +672,7 @@ p{
     align-items: center;
     overflow: hidden;
     transition: .3s;
+    z-index: 999;
 }
 
 .to_top:hover{
@@ -961,7 +964,7 @@ p{
 
     .ft_nav{
         top: auto;
-        bottom: 60px;
+        bottom: 40px;
         border:2px solid #1d3ab0;
     }
 

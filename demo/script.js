@@ -35,17 +35,22 @@ window.onload = function() {
     change.style.borderRadius = "1%";
     change.style.transition = ".3s";
     change.style.opacity = "1";
+    fixed_info.style.opacity = "1";
   })
 
   let closeInfo = document.querySelector('#info_close')
+  let fixed_info = document.querySelector('.fixed_info')
 
   closeInfo.addEventListener('click', () => {
-    change.style.width = "80px";
+    fixed_info.style.opacity = "0";
     change.style.height = "80px";
-    change.style.zIndex = "0";
-    change.style.borderRadius = "50%";
-    change.style.transition = ".3s";
-    call.style.opacity = "1";
+    window.setTimeout(( () => {
+        change.style.width = "80px";
+        change.style.zIndex = "0";
+        change.style.borderRadius = "50%";
+        change.style.transition = ".3s";
+        call.style.opacity = "1";
+    } ), 100);
   })
 
   let toTop = document.querySelector('.to_top')
