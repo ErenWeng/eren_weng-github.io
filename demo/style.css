@@ -150,7 +150,7 @@ p{
 
 .hd_nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     /* max-width: 86.54431818%; */
 
 }
