@@ -658,6 +658,15 @@ p{
 }
 
 
+#mobile-nav-btn-trigger:hover{
+    cursor: pointer;
+}
+
+#mobile-nav-top-trigger:hover{
+    cursor: pointer;
+}
+
+
 /*------fixed-----*/
 .modal{
     position: fixed;
