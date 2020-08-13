@@ -1,4 +1,5 @@
 window.onload = function() {
+// navbar
   let navTopTrigger = document.querySelector('#mobile-nav-top-trigger');
   let navTop = document.querySelector('#mobile-nav-top');
 
@@ -24,6 +25,9 @@ window.onload = function() {
         navBtn.classList.add('open')
     }
   });
+
+
+//   info
 
   let call = document.querySelector('.fixed_call')
   let change = document.querySelector('.fixed_call_change')
@@ -53,6 +57,8 @@ window.onload = function() {
     } ), 100);
   })
 
+
+// to top
   let toTop = document.querySelector('.to_top')
 
     window.onscroll = function scroll(){
@@ -69,5 +75,25 @@ window.onload = function() {
             top: 0,
             behavior: 'smooth'
         });
+    })
+
+// modal
+    let search = document.querySelector('#search_modal')
+    let modal = document.querySelector('.modal')
+    search.addEventListener('click', () => {
+        modal.style.display = "flex";
+        window.setTimeout(( () => {
+            modal.classList.add('fadeIn');
+            modal.classList.remove('fadeOut');
+        } ), 300);
+    })
+
+    let closeSearch = document.querySelector('#close_search')
+    closeSearch.addEventListener('click', () => {
+        modal.classList.remove('fadeIn');
+        modal.classList.add('fadeOut');
+        window.setTimeout(( () => {
+            modal.style.display = "none";
+        } ), 300);
     })
 };
